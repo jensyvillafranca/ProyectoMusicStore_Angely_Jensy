@@ -45,4 +45,7 @@
     <string name="No">nada</string>
     <string name="Regístrarse">Regístrarse</string>
     <string name="Atras">Atras</string>
+
+    <string name="ingreseNuevaContrasena">Ingrese una nueva contraseña</string>
+    <string name="confirmaContrasena">Confirme su contraseña</string>
 </resources>

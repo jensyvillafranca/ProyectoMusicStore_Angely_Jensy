@@ -86,15 +86,6 @@
                     android:textColor="#D3D3D3"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/lblenviardenuevo2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/LinkEnviarDeNuevo2"
-                    android:textAlignment="textEnd"
-                    android:textColor="#878484"
-                    android:textSize="11sp" />
-
                 <EditText
                     android:id="@+id/txtRecuperarVerificar"
                     android:layout_width="match_parent"
@@ -108,6 +99,15 @@
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="11dp" />
+
+                <TextView
+                    android:id="@+id/lblenviardenuevo2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LinkEnviarDeNuevo2"
+                    android:textAlignment="textEnd"
+                    android:textColor="#878484"
+                    android:textSize="11sp" />
 
                 <Space
                     android:layout_width="match_parent"
