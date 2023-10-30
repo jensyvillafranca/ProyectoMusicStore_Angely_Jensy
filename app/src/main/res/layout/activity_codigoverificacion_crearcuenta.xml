@@ -1,42 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:paddingTop="15dp">
+    tools:context=".activity_codigoverificacion_crearcuenta">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Encabezado con el botón Atrás -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:ignore="UselessParent">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/btnAtras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:src="@drawable/iconoatras"
-                    android:importantForAccessibility="no"/>
+                    android:contentDescription="@string/Atras"
+                    android:layout_gravity="center"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Atras"
                     android:textColor="@color/white"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
 
                 <Space
                     android:layout_width="0dp"
@@ -45,13 +50,7 @@
 
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            <!-- Contenido principal -->
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="70dp"/>
@@ -68,18 +67,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="256dp"
                 android:layout_gravity="center"
-                android:importantForAccessibility="no"
                 android:src="@drawable/iconorecuperarcontrasena" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="40dp">
 
                 <TextView
                     android:id="@+id/ingreseContrsenaActual"
-                    android:layout_width="318dp"
+                    android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:text="@string/LabelTienesProblemasParaIniciarSesion"
                     android:textColor="#D3D3D3"
@@ -90,10 +88,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/edittext"
-                    android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:labelFor="@+id/ingreseContrsenaActual"
-                    tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+                    android:labelFor="@id/ingreseContrsenaActual"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -113,15 +109,9 @@
                     android:layout_height="wrap_content"
                     android:background="@color/button"
                     android:text="@string/ENVIARCODIGO"
-                    android:textColor="@color/white"
-                    tools:ignore="TextContrastCheck,VisualLintButtonSize" />
+                    android:textColor="@color/white"/>
 
             </LinearLayout>
-
-
         </LinearLayout>
-
-    </FrameLayout>
-
-</ScrollView>
-
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

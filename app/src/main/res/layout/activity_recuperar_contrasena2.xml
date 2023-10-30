@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".perfilPersonal"
+    tools:context=".activity_recuperar_contrasena2"
     android:background="@drawable/background"
     android:paddingTop="15dp">
 
@@ -34,7 +34,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/atras"
+                    android:text="@string/Atras"
                     android:textColor="@color/white"
                     android:layout_gravity="center"
                     android:textStyle="bold"/>
