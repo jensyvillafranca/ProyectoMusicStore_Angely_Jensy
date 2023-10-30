@@ -192,7 +192,7 @@
                     android:textSize="10dp"></TextView>
 
 
-                <!--Reconocimiento Facial-->
+                <!--1) Reconocimiento Facial-->
                 <ImageButton
                     android:id="@+id/btnRegistrarFacial"
                     android:layout_width="35dp"
