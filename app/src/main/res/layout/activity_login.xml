@@ -51,7 +51,7 @@
 
                 <!---Nombre de Usuario-->
                 <TextView
-                    android:id="@+id/txtviewLoginNombres"
+                    android:id="@+id/txtviewRegistrarNombres"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/fuente_jost_global"
@@ -61,12 +61,11 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/txtLoginUsuario"
+                    android:id="@+id/txtRegistrarNombres"
                     android:layout_width="match_parent"
                     android:layout_height="39dp"
                     android:layout_marginTop="7dp"
-                    android:background="@color/white"
-                    android:inputType="text">
+                    android:background="@color/white">
 
                 </EditText>
 
@@ -215,7 +214,7 @@
 
                 <!---Boton de crear una cuenta-->
                 <Button
-                    android:id="@+id/btnLoginRegistrarse"
+                    android:id="@+id/btnRegistrarCrear"
                     android:layout_width="136dp"
                     android:layout_height="33dp"
                     android:layout_marginStart="10dp"

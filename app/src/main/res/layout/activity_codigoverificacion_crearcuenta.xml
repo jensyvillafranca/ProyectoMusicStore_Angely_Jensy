@@ -62,10 +62,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/fuente_jost_global"
-                android:text="@string/TienesProblemasParaIniciarSesion"
+                android:text="@string/CrearCuenta"
                 android:textColor="#D3D3D3"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imgviewRecuperarEnviarLogo"
@@ -83,13 +83,13 @@
                 <TextView
                     android:id="@+id/txtviewRecuperarEnviarTitulo2"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="30dp"
                     android:fontFamily="@font/fuente_jost_global"
-                    android:text="@string/LabelTienesProblemasParaIniciarSesion"
+                    android:justificationMode="inter_word"
+                    android:text="@string/IngresarCodigo"
                     android:textColor="#D3D3D3"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:justificationMode="inter_word"/>
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/txtRecuperarEnviar"
@@ -102,6 +102,16 @@
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="10dp" />
+                <TextView
+                    android:id="@+id/txtviewVerificarEnviarNuevamente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:text="@string/LinkEnviarDeNuevo2"
+                    android:textAlignment="textEnd"
+                    android:textColor="#878484"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -117,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/button"
                     android:fontFamily="@font/fuente_jost_global"
-                    android:text="@string/ENVIARCODIGO"
+                    android:text="@string/Regístrate"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
