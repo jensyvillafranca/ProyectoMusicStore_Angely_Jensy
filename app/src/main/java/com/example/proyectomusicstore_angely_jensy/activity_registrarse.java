@@ -39,13 +39,21 @@ public class activity_registrarse extends AppCompatActivity {
         usuario = (EditText) findViewById(R.id.txtRegistrarUsuario);
         password = (EditText) findViewById(R.id.txtRegistrarPassword);
         confirmar_password = (EditText) findViewById(R.id.txtRegistrarConfirmarPassword);
-        btn_insertar = (Button) findViewById(R.id.btnRegistrarCrear);
+        btn_insertar = (Button) findViewById(R.id.btnRegistrarEntrar);
 
 
         btn_insertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickBtnInsertar();
+
+                //la función validar permite validar cuando los campos están vacios y lanza una alerta
+                if(validar() == true){
+                    clickBtnInsertar();
+                }else{
+                    /*Aquí debe de mostrarse el mensaje personalizado*/
+                }
+
+
             }
         });
     }
@@ -88,4 +96,32 @@ public class activity_registrarse extends AppCompatActivity {
 
         queue.add(resultadoPost);
     }
+
+    /*Validación para no dejar campos vacíos*/
+    public boolean validar(){
+        boolean retorna = true;
+
+        if(nombres.getText().toString().isEmpty()){
+            nombres.setError("Campo nombres vacío");
+            retorna = false;
+        }
+        if(apellidos.getText().toString().isEmpty()){
+            apellidos.setError("Campo apellidos vacío");
+            retorna = false;
+        }
+        if(correo_electronico.getText().toString().isEmpty()){
+            correo_electronico.setError("Campo correo electrónico vacío");
+            retorna = false;
+        }
+        if(usuario.getText().toString().isEmpty()){
+            usuario.setError("Campo usuario vacío");
+            retorna = false;
+        }
+        if(password.getText().toString().isEmpty()){
+            password.setError("Campo password vacío");
+            retorna = false;
+        }
+        return retorna;
+    }
+
 }

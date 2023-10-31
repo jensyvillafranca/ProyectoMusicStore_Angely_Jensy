@@ -89,7 +89,7 @@
                     android:layout_height="28dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginRight="14dp"
-                    android:background="@color/white"
+                    android:background="@drawable/edittext"
                     android:padding="6dp"
                     android:textSize="14sp"></EditText>
 
@@ -99,7 +99,7 @@
                     android:layout_width="155dp"
                     android:layout_height="28dp"
                     android:layout_marginTop="7dp"
-                    android:background="@color/white"
+                    android:background="@drawable/edittext"
                     android:padding="6dp"
                     android:textSize="14sp"></EditText>
             </LinearLayout>
@@ -130,7 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="28dp"
                     android:layout_marginTop="7dp"
-                    android:background="@color/white"
+                    android:background="@drawable/edittext"
                     android:padding="6dp"
                     android:textSize="14sp"></EditText>
 
@@ -151,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="28dp"
                     android:layout_marginTop="7dp"
-                    android:background="@color/white"
+                    android:background="@drawable/edittext"
                     android:padding="6dp"
                     android:textSize="14sp"></EditText>
 
@@ -172,7 +172,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="28dp"
                     android:layout_marginTop="7dp"
-                    android:background="@color/white"
+                    android:background="@drawable/edittext"
                     android:padding="6dp"
                     android:textSize="14sp"></EditText>
 
@@ -193,7 +193,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="28dp"
                     android:layout_marginTop="7dp"
-                    android:background="@color/white"
+                    android:background="@drawable/edittext"
                     android:padding="6dp"
                     android:textSize="14sp"></EditText>
             </LinearLayout>
@@ -259,7 +259,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btnRegistrarCrear"
+                    android:id="@+id/btnRegistrarEntrar"
                     android:layout_width="145dp"
                     android:layout_height="33dp"
                     android:layout_marginStart="80dp"
