@@ -1,29 +1,63 @@
 package com.example.proyectomusicstore_angely_jensy;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import com.bumptech.glide.Glide;
+
 
 
 public class MainActivity extends AppCompatActivity {
-    Button prueba;
+
+    private ImageView gifImageView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        prueba =(Button)findViewById(R.id.boton);
+        gifImageView = findViewById(R.id.gifImageView);
+        progressBar = findViewById(R.id.progressBar);
 
-        prueba.setOnClickListener(new View.OnClickListener() {
+
+
+        // Cargar el GIF con Glide
+        Glide.with(this)
+                .asGif()
+                .load(R.drawable.cargando)
+                .into(gifImageView);
+
+        // Simular una carga
+        simulateLoading();
+
+        progressBar.setVisibility(View.INVISIBLE);
+
+    }
+
+
+
+    private void simulateLoading() {
+        // Simular un proceso de carga (por ejemplo, 3 segundos)
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
-                Intent prueba = new Intent(getApplicationContext(), activity_login.class);
-                startActivity(prueba);
+            public void run() {
+                // Ocultar el GIF y el ProgressBar
+                gifImageView.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
+
+
+                // Abrir la actividad activity_login
+                Intent intent = new Intent(MainActivity.this, activity_login.class);
+                startActivity(intent);
+                finish(); // Cierra la actividad actual
             }
-        });
+        }, 5000); // 5000 milisegundos (5 segundos)
     }
 }
