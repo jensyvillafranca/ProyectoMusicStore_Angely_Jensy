@@ -47,11 +47,12 @@
 
                 <!-- Espacio en blanco en la parte inferior -->
                 <Space
+                    android:id="@+id/imgviewLogo"
                     android:layout_width="match_parent"
                     android:layout_height="405dp" />
 
                 <Button
-                    android:id="@+id/BtnIngresar"
+                    android:id="@+id/btnIngresar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/button"
