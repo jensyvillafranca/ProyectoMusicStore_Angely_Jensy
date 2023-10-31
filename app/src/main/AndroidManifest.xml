@@ -16,6 +16,23 @@
         <activity
             android:name=".activity_registrarse"
             android:exported="false" />
+
+        <activity
+            android:name=".activity_principal"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity_recuperar_contrasena1"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity_recuperar_contrasena2"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity_recuperar_contrasena3"
+            android:exported="false" />
+
         <activity
             android:name=".activity_login"
             android:exported="false" />

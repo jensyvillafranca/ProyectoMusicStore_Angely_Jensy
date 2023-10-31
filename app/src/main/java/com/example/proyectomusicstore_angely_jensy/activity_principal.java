@@ -8,15 +8,30 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class activity_principal extends AppCompatActivity {
-    Button registrate;
+
+    /*Declaración de las variables*/
+    Button registrate, acceder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+        /*Amarrando las variables al elemento de la interfaz*/
         registrate =(Button)findViewById(R.id.btnRegistrarse);
+        acceder =(Button)findViewById(R.id.btnIngresar);
 
+
+        /*Evento del boton de ir a la ventana de login*/
+        acceder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent login = new Intent(getApplicationContext(),activity_login.class);
+                startActivity(login);
+            }
+        });
+
+        /*Evento del boton de ir a la ventana de registrarse*/
         registrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -25,5 +40,4 @@ public class activity_principal extends AppCompatActivity {
             }
         });
     }
-
 }

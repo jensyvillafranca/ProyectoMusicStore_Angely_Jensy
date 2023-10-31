@@ -2,10 +2,12 @@ package com.example.proyectomusicstore_angely_jensy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,6 +29,8 @@ public class activity_registrarse extends AppCompatActivity {
     String enlaceFoto = "Nulo";
     int idVisualizacion = 1;
 
+    TextView txtviewRegistrarCuentaCreada;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +44,19 @@ public class activity_registrarse extends AppCompatActivity {
         password = (EditText) findViewById(R.id.txtRegistrarPassword);
         confirmar_password = (EditText) findViewById(R.id.txtRegistrarConfirmarPassword);
         btn_insertar = (Button) findViewById(R.id.btnRegistrarEntrar);
+        txtviewRegistrarCuentaCreada = (TextView) findViewById(R.id.txtviewRegistrarCuentaCreada);
 
 
+        /*Evento del boton de crear la cuenta, en donde debe de mandar a llamar la ventana de verificar el correo electrónico*/
         btn_insertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //la función validar permite validar cuando los campos están vacios y lanza una alerta
                 if(validar() == true){
-                    clickBtnInsertar();
+                    /*Manda a llamar la ventana de verificación de correo*/
+                    Intent verificarCorreo = new Intent(getApplicationContext(),activity_codigoverificacion_crearcuenta.class);
+                    startActivity(verificarCorreo);
                 }else{
                     /*Aquí debe de mostrarse el mensaje personalizado*/
                 }
@@ -56,46 +64,19 @@ public class activity_registrarse extends AppCompatActivity {
 
             }
         });
-    }
 
-
-
-    public void clickBtnInsertar() {
-        String url = "https://phpclusters-152474-0.cloudclusters.net/insertarUsuario.php";
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        StringRequest resultadoPost = new StringRequest(
-                Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "Usuario insertado exitosamente", Toast.LENGTH_LONG).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Error " + error.toString(), Toast.LENGTH_LONG).show();
-                    }
-                }
-        ) {
+        /*Evento para regresar al login, desde el textview "Ya tengo una cuenta"*/
+        txtviewRegistrarCuentaCreada.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> parametros = new HashMap<>();
-                parametros.put("nombres", nombres.getText().toString());
-                parametros.put("apellidos", apellidos.getText().toString());
-                parametros.put("correo", correo_electronico.getText().toString());
-                parametros.put("usuario", usuario.getText().toString());
-                parametros.put("contrasenia", password.getText().toString());
-                parametros.put("token", token.toString());
-                parametros.put("enlacefoto", enlaceFoto.toString());
-                parametros.put("idvisualizacion", Integer.toString(idVisualizacion));
-                return parametros;
-            }
-        };
+            public void onClick(View v) {
 
-        queue.add(resultadoPost);
+                /*Levantar un item para poder invocar la pantalla del login*/
+                Intent login = new Intent(getApplicationContext(),activity_login.class);
+                startActivity(login);
+            }
+        });
     }
+
 
     /*Validación para no dejar campos vacíos*/
     public boolean validar(){

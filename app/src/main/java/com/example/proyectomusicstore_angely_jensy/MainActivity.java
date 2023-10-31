@@ -52,9 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 gifImageView.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
 
-
-                // Abrir la actividad activity_login
-                Intent intent = new Intent(MainActivity.this, activity_login.class);
+                // Abrir la actividad activity_principal
+                Intent intent = new Intent(MainActivity.this, activity_principal.class);
                 startActivity(intent);
                 finish(); // Cierra la actividad actual
             }

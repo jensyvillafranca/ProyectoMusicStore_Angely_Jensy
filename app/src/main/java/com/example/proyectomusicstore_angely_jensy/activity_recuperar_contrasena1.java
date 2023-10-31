@@ -1,5 +1,6 @@
 package com.example.proyectomusicstore_angely_jensy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,9 @@ public class activity_recuperar_contrasena1 extends AppCompatActivity {
                 //la función validar permite validar cuando los campos están vacios y lanza una alerta
                 if(validar() == true){
 
+                    /*Mandar a llamar la siguiente ventana donde se ingresara el código de verificación*/
+                    Intent codigoVerificacion = new Intent(getApplicationContext(),activity_recuperar_contrasena2.class);
+                    startActivity(codigoVerificacion);
                 }else{
                     /*Aquí debe de mostrarse el mensaje personalizado*/
                 }

@@ -1,5 +1,6 @@
 package com.example.proyectomusicstore_angely_jensy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,9 @@ public class activity_recuperar_contrasena2 extends AppCompatActivity {
             public void onClick(View v) {
                 //la función validar permite validar cuando los campos están vacios y lanza una alerta
                 if(validar() == true){
+                    /*Mandar a llamar la siguiente ventana donde se ingresara la nueva contraseña*/
+                    Intent contrasenaNueva = new Intent(getApplicationContext(),activity_recuperar_contrasena3.class);
+                    startActivity(contrasenaNueva);
 
                 }else{
                     /*Aquí debe de mostrarse el mensaje personalizado*/
