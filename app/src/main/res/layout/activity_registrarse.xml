@@ -26,23 +26,23 @@
 
 
             <ImageView
+                android:id="@+id/imgviewIconoRegistrarse"
                 android:layout_width="112dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:background="@drawable/logoregistrate">
-            </ImageView>
+                android:background="@drawable/logoregistrate"></ImageView>
 
             <TextView
+                android:id="@+id/txtviewRegistrarseTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/fuente_jost_global"
-                android:text="@string/Regístrate"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/fuente_jost_global"
+                android:text="@string/registrarse"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <LinearLayout
                 android:id="@+id/linearLayout"

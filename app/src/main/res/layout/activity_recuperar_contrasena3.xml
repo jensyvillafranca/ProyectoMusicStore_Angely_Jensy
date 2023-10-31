@@ -38,10 +38,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:gravity="center"
                     android:text="@string/Atras"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:gravity="center" />
+                    android:textStyle="bold" />
 
                 <Space
                     android:layout_width="0dp"
@@ -56,19 +57,23 @@
                 android:layout_height="70dp" />
 
             <TextView
+                android:id="@+id/txtviewRecuperarRestaurarTitulo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/fuente_jost_global"
+                android:textStyle="bold"
                 android:text="@string/RecuperarContra"
                 android:textColor="#D3D3D3"
                 android:textSize="20sp" />
 
             <ImageView
+                android:id="@+id/imgviewRestaurarLogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/iconorecuperarcontrasena"
-                android:importantForAccessibility="no" />
+                android:importantForAccessibility="no"
+                android:src="@drawable/iconorecuperarcontrasena" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,9 +82,11 @@
                 android:paddingHorizontal="40dp">
 
                 <TextView
-                    android:id="@+id/ingreseContrsenaActual"
+                    android:id="@+id/txtviewRecuperarEnviarTitulo2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textStyle="bold"
                     android:text="@string/ingreseNuevaContrasena"
                     android:textColor="#D3D3D3"
                     android:textSize="15sp" />
@@ -91,19 +98,21 @@
                     android:background="@drawable/edittext"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:labelFor="@+id/ingreseContrsenaActual" />
+                    android:labelFor="@+id/txtviewRecuperarEnviarTitulo2" />
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="10dp" />
 
                 <TextView
-                    android:id="@+id/ingreseNuevaContrasena"
+                    android:id="@+id/txtviewRecuperarConfirmarPass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/confirmaContrasena"
                     android:textColor="#D3D3D3"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/txtRecuperarConfirmar"
@@ -112,7 +121,7 @@
                     android:background="@drawable/edittext"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:labelFor="@id/ingreseNuevaContrasena" />
+                    android:labelFor="@id/txtviewRecuperarConfirmarPass" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -123,12 +132,14 @@
                     android:layout_height="126dp" />
 
                 <Button
-                    android:id="@+id/BtnRecuperarRestaurar"
+                    android:id="@+id/btnRecuperarRestaurar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/button"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/RestaurarContra"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
