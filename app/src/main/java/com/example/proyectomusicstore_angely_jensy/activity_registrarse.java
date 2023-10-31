@@ -8,17 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class activity_registrarse extends AppCompatActivity {
 
@@ -37,7 +26,7 @@ public class activity_registrarse extends AppCompatActivity {
         setContentView(R.layout.activity_registrarse);
 
         /*Relacionando las variables con el objeto de la interfaz*/
-        nombres = (EditText) findViewById(R.id.txtRegistrarNombres);
+        nombres = (EditText) findViewById(R.id.txtLoginUsuario);
         apellidos = (EditText) findViewById(R.id.txtRegistrarApellidos);
         correo_electronico = (EditText) findViewById(R.id.txtRegistrarCorreo);
         usuario = (EditText) findViewById(R.id.txtRegistrarUsuario);

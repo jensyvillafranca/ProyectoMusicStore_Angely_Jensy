@@ -25,7 +25,7 @@ public class activity_login extends AppCompatActivity {
 
         /*Amarrando las variables con el elemento de la interfaz*/
         btnLoginEntrar = (Button) findViewById(R.id.btnLoginEntrar);
-        btnLoginRegistrarse = (Button) findViewById(R.id.btnLoginRegistrarse);
+        btnLoginRegistrarse = (Button) findViewById(R.id.btnLoginEntrar);
 
         txtLoginUsuario = (EditText) findViewById(R.id.txtLoginUsuario);
         txtLoginPassword = (EditText) findViewById(R.id.txtLoginPassword);
