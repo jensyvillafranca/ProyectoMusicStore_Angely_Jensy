@@ -8,6 +8,7 @@
     <string name="txtviewOlvidaPassword">¿Olvida su contraseña?</string>
     <string name="btnLoginEntrar">Entrar</string>
     <string name="btnLoginRegistrarse">Registrarse</string>
+    <string name="login">¡INICIA SESIÓN!</string>
 
     <!--Jensy Login-->
     <string name="txtviewRegistrarNombres">Nombres</string>
@@ -31,7 +32,7 @@
     <string name="CrearCuenta">Crear cuenta</string>
     <string name="IngresarCodigo">Ingrese el código de verificacíon</string>
     <string name="LinkEnviarDeNuevo">Enviar de nuevo</string>
-    <string name="Regístrate">Regístrate</string>
+    <string name="Regístrate">¡REGISTRATE!</string>
 
     <string name="RecuperarContra">Recuperar contraseña</string>
     <string name="RestaurarContra">Restaurar contraseña</string>
