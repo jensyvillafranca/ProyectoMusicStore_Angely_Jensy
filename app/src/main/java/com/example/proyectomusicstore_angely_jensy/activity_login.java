@@ -22,10 +22,9 @@ public class activity_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         /*Amarrando las variables con el elemento de la interfaz*/
-                btnLoginEntrar = (Button) findViewById(R.id.btnLoginEntrar);
-        btnLoginRegistrarse = (Button) findViewById(R.id.btnLoginEntrar);
+        btnLoginEntrar = (Button) findViewById(R.id.btnLoginEntrar);
+        btnLoginRegistrarse = (Button) findViewById(R.id.btnRegistrarCrear);
 
         txtLoginUsuario = (EditText) findViewById(R.id.txtLoginUsuario);
         txtLoginPassword = (EditText) findViewById(R.id.txtLoginPassword);

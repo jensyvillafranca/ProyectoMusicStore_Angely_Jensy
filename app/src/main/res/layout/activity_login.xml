@@ -152,8 +152,8 @@
                 <!---¿Olvido su contraseña?-->
                 <TextView
                     android:id="@+id/txtviewOlvidaPassword"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="35dp"
                     android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/txtviewOlvidaPassword"
