@@ -5,35 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".activity_codigoverificacion_crearcuenta">
+    tools:context=".activity_recuperar_contrasena3"
+    android:background="@drawable/background">
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Encabezado con el botón Atrás -->
+            <!-- Encabezado con botón "Atrás" -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/btnAtras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/iconoatras"
-                    android:contentDescription="@string/Atras"
-                    android:layout_gravity="center"/>
+                    android:importantForAccessibility="no"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
                     android:text="@string/Atras"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:layout_gravity="center"/>
+                    android:gravity="center" />
 
                 <Space
                     android:layout_width="0dp"
@@ -50,24 +50,25 @@
 
             </LinearLayout>
 
-            <!-- Contenido principal -->
+            <!-- Separador espacial -->
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/TienesProblemasParaIniciarSesion"
+                android:text="@string/RecuperarContra"
                 android:textColor="#D3D3D3"
                 android:textSize="20sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="256dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/iconorecuperarcontrasena" />
+                android:src="@drawable/iconorecuperarcontrasena"
+                android:importantForAccessibility="no" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,19 +78,41 @@
 
                 <TextView
                     android:id="@+id/ingreseContrsenaActual"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="@string/LabelTienesProblemasParaIniciarSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ingreseNuevaContrasena"
                     android:textColor="#D3D3D3"
-                    android:textSize="12sp" />
+                    android:textSize="15sp" />
 
                 <EditText
-                    android:id="@+id/txtRecuperarEnviar"
+                    android:id="@+id/txtRecuperarNuevoPass"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/edittext"
+                    android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:labelFor="@id/ingreseContrsenaActual"/>
+                    android:labelFor="@+id/ingreseContrsenaActual" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:id="@+id/ingreseNuevaContrasena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirmaContrasena"
+                    android:textColor="#D3D3D3"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/txtRecuperarConfirmar"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edittext"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword"
+                    android:labelFor="@id/ingreseNuevaContrasena" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -97,21 +120,20 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="134dp" />
+                    android:layout_height="126dp" />
 
                 <Button
-                    android:id="@+id/BtnRecuperarEnviar"
+                    android:id="@+id/BtnRecuperarRestaurar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/button"
-                    android:text="@string/ENVIARCODIGO"
-                    android:textColor="@color/white"/>
+                    android:text="@string/RestaurarContra"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

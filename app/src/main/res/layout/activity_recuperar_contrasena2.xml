@@ -1,47 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".activity_recuperar_contrasena2"
     android:background="@drawable/background"
-    tools:context=".activity_codigoverificacion_crearcuenta">
+    android:paddingTop="15dp">
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Encabezado con el botón Atrás -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:id="@+id/btnAtras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:src="@drawable/iconoatras"
-                    android:contentDescription="@string/Atras"
-                    android:layout_gravity="center"/>
+                    android:importantForAccessibility="no"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Atras"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:textStyle="bold"/>
 
                 <Space
                     android:layout_width="0dp"
@@ -50,16 +46,22 @@
 
             </LinearLayout>
 
-            <!-- Contenido principal -->
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="70dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+             <Space
+                 android:layout_width="match_parent"
+                 android:layout_height="70dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/TienesProblemasParaIniciarSesion"
+                android:text="@string/RecuperarContra"
                 android:textColor="#D3D3D3"
                 android:textSize="20sp" />
 
@@ -67,29 +69,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="256dp"
                 android:layout_gravity="center"
+                android:importantForAccessibility="no"
                 android:src="@drawable/iconorecuperarcontrasena" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="360dp"
                 android:orientation="vertical"
                 android:paddingHorizontal="40dp">
 
                 <TextView
                     android:id="@+id/ingreseContrsenaActual"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="@string/LabelTienesProblemasParaIniciarSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="58dp"
+                    android:text="@string/LabelRecuperarContra"
                     android:textColor="#D3D3D3"
                     android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/txtRecuperarEnviar"
+                    android:id="@+id/txtRecuperarVerificar"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="39dp"
                     android:background="@drawable/edittext"
+                    android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:labelFor="@id/ingreseContrsenaActual"/>
+                    android:labelFor="@+id/ingreseContrsenaActual"
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="11dp" />
+
+                <TextView
+                    android:id="@+id/lblenviardenuevo2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LinkEnviarDeNuevo2"
+                    android:textAlignment="textEnd"
+                    android:textColor="#878484"
+                    android:textSize="11sp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -97,21 +115,22 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="134dp" />
+                    android:layout_height="123dp" />
 
                 <Button
-                    android:id="@+id/BtnRecuperarEnviar"
+                    android:id="@+id/BtnRestaurarVerificar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/button"
-                    android:text="@string/ENVIARCODIGO"
-                    android:textColor="@color/white"/>
+                    android:text="@string/VerificarCodigo"
+                    android:textColor="@color/white"
+                    tools:ignore="TextContrastCheck,VisualLintButtonSize" />
 
             </LinearLayout>
+
+
         </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</ScrollView>
