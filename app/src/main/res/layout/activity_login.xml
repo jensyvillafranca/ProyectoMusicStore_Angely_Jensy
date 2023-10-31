@@ -21,33 +21,43 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
             <ImageView
                 android:id="@+id/imgviewIconoLogin"
                 android:layout_width="112dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
                 android:background="@drawable/logoiniciosesion"></ImageView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
 
             <TextView
                 android:id="@+id/txtviewLoginTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
                 android:fontFamily="@font/fuente_jost_global"
                 android:text="@string/login"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"></TextView>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:id="@+id/linearLayout5"
-                android:layout_width="278dp"
-                android:layout_height="157dp"
+                android:layout_width="277dp"
+                android:layout_height="179dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:orientation="vertical">
+
 
                 <!---Nombre de Usuario-->
                 <TextView
@@ -55,39 +65,54 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"
                     android:text="@string/textviewLoginUsuario"
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
 
                 <EditText
                     android:id="@+id/txtRegistrarNombres"
                     android:layout_width="match_parent"
                     android:layout_height="39dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@color/white">
+                    android:background="@drawable/edittext">
 
                 </EditText>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="21dp" />
 
                 <!---Password-->
                 <TextView
                     android:id="@+id/txtviewLoginPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/textviewLoginPassword"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
 
                 <EditText
                     android:id="@+id/txtLoginPassword"
                     android:layout_width="match_parent"
                     android:layout_height="39dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@color/white"
-                    android:inputType="text|textPassword"></EditText>
+                    android:background="@drawable/edittext"
+
+                    android:inputType="text|textPassword"
+
+                    ></EditText>
+
+
+
             </LinearLayout>
 
             <!---Área de checkbox y enlace-->
@@ -95,13 +120,15 @@
             <!---Área de datos bimetricos-->
 
             <!---Área de botones-->
-
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="17dp" />
             <LinearLayout
                 android:id="@+id/linearLayout6"
                 android:layout_width="278dp"
                 android:layout_height="47dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+
                 android:orientation="horizontal"
                 android:paddingLeft="-10dp">
 
@@ -119,6 +146,7 @@
                     android:textSize="13sp"
                     android:fontFamily="@font/fuente_jost_global"
                     android:textStyle="bold">
+
                 </CheckBox>
 
                 <!---¿Olvido su contraseña?-->
@@ -132,14 +160,17 @@
                     android:textColor="#FFFDFD"
                     android:textSize="13sp"
                     android:textStyle="bold"></TextView>
+
             </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="17dp" />
 
             <LinearLayout
                 android:id="@+id/linearLayout7"
                 android:layout_width="278dp"
                 android:layout_height="47dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
                 android:orientation="horizontal">
 
                 <!--Huella Digital-->
@@ -163,6 +194,7 @@
                     android:textColor="#FFFFFF"
                     android:textSize="15dp"></TextView>
 
+
                 <!--Reconocimiento Facial-->
                 <ImageButton
                     android:id="@+id/btnRegistrarFacial"
@@ -185,11 +217,14 @@
                     android:textSize="15dp"></TextView>
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="33dp" />
+
             <LinearLayout
-                android:layout_width="278dp"
-                android:layout_height="47dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="100dp"
                 android:orientation="horizontal">
 
                 <!---Boton de loguiarse-->
@@ -198,11 +233,11 @@
                     android:layout_width="115dp"
                     android:layout_height="33dp"
                     android:background="@color/button"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:paddingTop="-5dp"
                     android:text="@string/btnLoginEntrar"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"
                     android:textColor="@color/white"
+                    android:textStyle="bold"
                     tools:ignore="TextContrastCheck,VisualLintButtonSize" />
 
                 <TextView
@@ -219,13 +254,17 @@
                     android:layout_height="33dp"
                     android:layout_marginStart="10dp"
                     android:background="@color/white"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:paddingTop="-7dp"
                     android:text="@string/btnLoginRegistrarse"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     tools:ignore="TextContrastCheck,VisualLintButtonSize" />
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="107dp" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
