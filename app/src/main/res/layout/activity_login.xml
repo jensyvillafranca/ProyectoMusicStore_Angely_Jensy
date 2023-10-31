@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondofinallogin"
-    tools:context=".activity_login">
+    tools:context=".activity_login"
+    android:background="@drawable/fondodetodaslaspantallas">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,20 +19,41 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <ImageView
+                android:layout_width="112dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/logoiniciosesion">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/fuente_jost_global"
+                android:text="@string/login"
+                android:layout_marginTop="10dp"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold">
+            </TextView>
 
             <LinearLayout
                 android:id="@+id/linearLayout5"
                 android:layout_width="278dp"
                 android:layout_height="157dp"
-                android:layout_marginTop="300dp"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical">
 
                 <!---Nombre de Usuario-->
                 <TextView
                     android:id="@+id/txtviewRegistrarNombres"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textStyle="bold"
                     android:text="@string/textviewLoginUsuario"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
@@ -54,7 +75,9 @@
                     android:layout_marginTop="22dp"
                     android:text="@string/textviewLoginPassword"
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/txtLoginPassword"
@@ -75,10 +98,10 @@
                 android:id="@+id/linearLayout6"
                 android:layout_width="278dp"
                 android:layout_height="47dp"
-                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                android:paddingLeft="-10dp"
-                android:layout_gravity="center">
+                android:paddingLeft="-10dp">
 
                 <!---Checkbox-->
                 <CheckBox
@@ -91,7 +114,10 @@
                     android:textColor="#FFFDFD"
                     android:textColorHighlight="#FFFFFF"
                     android:textColorLink="#FFFCFC"
-                    android:textSize="13sp"></CheckBox>
+                    android:textSize="13sp"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textStyle="bold">
+                </CheckBox>
 
                 <!---¿Olvido su contraseña?-->
                 <TextView
@@ -100,7 +126,9 @@
                     android:layout_marginStart="35dp"
                     android:text="@string/txtviewOlvidaPassword"
                     android:textColor="#FFFDFD"
-                    android:textSize="13sp">
+                    android:textSize="13sp"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textStyle="bold">
                 </TextView>
             </LinearLayout>
 
@@ -108,9 +136,9 @@
                 android:id="@+id/linearLayout7"
                 android:layout_width="278dp"
                 android:layout_height="47dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
 
                 <!--Huella Digital-->
                 <ImageButton
@@ -128,6 +156,8 @@
                     android:paddingLeft="10dp"
                     android:paddingTop="13dp"
                     android:text="Huella"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textStyle="bold"
                     android:textColor="#FFFFFF"
                     android:textSize="15dp"></TextView>
 
@@ -147,6 +177,8 @@
                     android:paddingLeft="10dp"
                     android:paddingTop="13dp"
                     android:text="Rec.Facial"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textStyle="bold"
                     android:textColor="#FFFFFF"
                     android:textSize="15dp"></TextView>
             </LinearLayout>
@@ -154,9 +186,9 @@
             <LinearLayout
                 android:layout_width="278dp"
                 android:layout_height="47dp"
-                android:layout_marginTop="30dp"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:orientation="horizontal">
 
                 <!---Boton de loguiarse-->
                 <Button
@@ -166,15 +198,17 @@
                     android:background="@color/button"
                     android:paddingTop="-5dp"
                     android:text="@string/btnLoginEntrar"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     tools:ignore="TextContrastCheck,VisualLintButtonSize" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="o"
-                    android:textColor="#FFFFFF">
-                </TextView>
+                    android:textColor="#FFFFFF"></TextView>
 
                 <!---Boton de crear una cuenta-->
                 <Button
@@ -185,6 +219,8 @@
                     android:background="@color/white"
                     android:paddingTop="-7dp"
                     android:text="@string/btnLoginRegistrarse"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     tools:ignore="TextContrastCheck,VisualLintButtonSize" />
             </LinearLayout>
