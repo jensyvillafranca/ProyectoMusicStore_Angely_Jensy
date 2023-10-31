@@ -24,7 +24,7 @@ public class activity_login extends AppCompatActivity {
 
 
         /*Amarrando las variables con el elemento de la interfaz*/
-        btnLoginEntrar = (Button) findViewById(R.id.btnLoginEntrar);
+                btnLoginEntrar = (Button) findViewById(R.id.btnLoginEntrar);
         btnLoginRegistrarse = (Button) findViewById(R.id.btnLoginEntrar);
 
         txtLoginUsuario = (EditText) findViewById(R.id.txtLoginUsuario);
@@ -77,5 +77,5 @@ public class activity_login extends AppCompatActivity {
             retorna = false;
         }
         return retorna;
-    }
+}
 }
