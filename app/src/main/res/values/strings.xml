@@ -38,7 +38,7 @@
     <string name="RecuperarContra">Recuperar contraseña</string>
     <string name="RestaurarContra">Restaurar contraseña</string>
 
-    <string name="LabelRecuperarContra">Hemos enviado un código de verificación a tu dirección de correo. Por favor, introduce esta secuencia de números en la casilla de verificación siguiente</string>
+    <string name="LabelRecuperarContra">Hemos enviado un código de verificación a tu dirección de correo. Por favor, introduce esta secuencia de números en la siguiente casilla de verificación </string>
     <string name="LinkEnviarDeNuevo2">Enviar de nuevo</string>
     <string name="VerificarCodigo">Verificar</string>
 
