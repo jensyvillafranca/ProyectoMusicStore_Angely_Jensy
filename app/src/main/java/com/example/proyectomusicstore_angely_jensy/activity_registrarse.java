@@ -11,7 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.text.InputFilter;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class activity_registrarse extends AppCompatActivity {
@@ -67,6 +77,8 @@ public class activity_registrarse extends AppCompatActivity {
                 //la función validar permite validar cuando los campos están vacios y lanza una alerta
                 if(validar() == true){
                     /*Manda a llamar la ventana de verificación de correo*/
+
+                    enviarCodigoVerificacion();
                     Intent verificarCorreo = new Intent(getApplicationContext(),activity_codigoverificacion_crearcuenta.class);
                     startActivity(verificarCorreo);
                 }else{
@@ -90,6 +102,38 @@ public class activity_registrarse extends AppCompatActivity {
         /*Llamada al método de validar expresiones regulares*/
         expresiones_regulares();
     }
+
+    public void enviarCodigoVerificacion() {
+        String url = "https://phpclusters-152621-0.cloudclusters.net/verificacionCorreo.php";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        StringRequest resultadoPost = new StringRequest(
+                Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getApplicationContext(), "Código mandado", Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Error " + error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> parametros = new HashMap<>();
+                parametros.put("email", correo_electronico.getText().toString());
+                return parametros;
+            }
+        };
+
+        queue.add(resultadoPost);
+    }
+
 
 
     /*Validación para no dejar campos vacíos*/
