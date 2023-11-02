@@ -78,7 +78,9 @@
                     android:id="@+id/txtLoginUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="39dp"
-                    android:background="@drawable/edittext">
+                    android:background="@drawable/edittext"
+                    android:inputType="text"
+                    android:textSize="15sp">
 
                 </EditText>
 
@@ -109,7 +111,7 @@
 
                     android:inputType="text|textPassword"
 
-                    ></EditText>
+                    android:textSize="15sp"></EditText>
 
 
 

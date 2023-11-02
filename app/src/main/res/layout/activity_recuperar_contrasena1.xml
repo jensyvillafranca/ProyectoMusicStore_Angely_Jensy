@@ -93,14 +93,15 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/txtRecuperarEnviar"
+                    android:id="@+id/txtRecuperarRegistrarse"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/edittext"
                     android:importantForAutofill="no"
-                    android:inputType="textPassword"
+                    android:inputType="text|textEmailAddress"
 
-                    android:labelFor="@+id/txtviewRecuperarEnviarTitulo2" />
+                    android:labelFor="@+id/txtviewRecuperarEnviarTitulo2"
+                    android:textSize="15sp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -115,7 +116,7 @@
                     android:layout_height="120dp" />
 
                 <Button
-                    android:id="@+id/btnRecuperarEnviar"
+                    android:id="@+id/btnRecuperarRegistrarse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/button"

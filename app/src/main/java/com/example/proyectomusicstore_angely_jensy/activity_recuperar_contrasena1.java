@@ -21,8 +21,8 @@ public class activity_recuperar_contrasena1 extends AppCompatActivity {
         setContentView(R.layout.activity_recuperar_contrasena1);
 
         /*Amarrando los valores de las variables al objeto de la interfaz*/
-        btnRecuperarEnviar = (Button) findViewById(R.id.btnRecuperarEnviar);
-        txtRecuperarEnviar = (EditText) findViewById(R.id.txtRecuperarEnviar);
+        btnRecuperarEnviar = (Button) findViewById(R.id.btnRecuperarRegistrarse);
+        txtRecuperarEnviar = (EditText) findViewById(R.id.txtRecuperarRegistrarse);
 
         btnRecuperarEnviar.setOnClickListener(new View.OnClickListener() {
             @Override

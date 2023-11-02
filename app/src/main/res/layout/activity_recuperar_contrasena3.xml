@@ -98,7 +98,8 @@
                     android:background="@drawable/edittext"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:labelFor="@+id/txtviewRecuperarEnviarTitulo2" />
+                    android:labelFor="@+id/txtviewRecuperarEnviarTitulo2"
+                    android:textSize="15sp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -121,7 +122,8 @@
                     android:background="@drawable/edittext"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:labelFor="@id/txtviewRecuperarConfirmarPass" />
+                    android:labelFor="@id/txtviewRecuperarConfirmarPass"
+                    android:textSize="15sp" />
 
                 <Space
                     android:layout_width="match_parent"

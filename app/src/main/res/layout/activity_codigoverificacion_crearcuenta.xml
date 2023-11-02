@@ -83,22 +83,27 @@
                 <TextView
                     android:id="@+id/txtviewRecuperarEnviarTitulo2"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="63dp"
                     android:fontFamily="@font/fuente_jost_global"
                     android:justificationMode="inter_word"
-                    android:text="@string/IngresarCodigo"
+                    android:text="@string/LabelRecuperarContra"
                     android:textColor="#D3D3D3"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
                 <EditText
-                    android:id="@+id/txtRecuperarEnviar"
+                    android:id="@+id/txtRecuperarRegistrarse"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/edittext"
-                    android:inputType="textPassword"
-                    android:labelFor="@id/txtviewRecuperarEnviarTitulo2"/>
-
+                    android:inputType="number"
+                    android:labelFor="@id/txtviewRecuperarEnviarTitulo2"
+                    android:textSize="15sp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -119,11 +124,11 @@
                     android:layout_height="wrap_content" />
 
                 <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="134dp" />
+                    android:layout_width="331dp"
+                    android:layout_height="108dp" />
 
                 <Button
-                    android:id="@+id/btnRecuperarEnviar"
+                    android:id="@+id/btnRecuperarRegistrarse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/button"
