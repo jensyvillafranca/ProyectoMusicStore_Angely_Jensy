@@ -26,7 +26,7 @@ public class activity_login extends AppCompatActivity {
         btnLoginEntrar = (Button) findViewById(R.id.btnLoginEntrar);
         btnLoginRegistrarse = (Button) findViewById(R.id.btnRegistrarCrear);
 
-        txtLoginUsuario = (EditText) findViewById(R.id.txtLoginUsuario);
+        txtLoginUsuario = (EditText) findViewById(R.id.txtRegistrarUsuario);
         txtLoginPassword = (EditText) findViewById(R.id.txtLoginPassword);
         txtviewOlvidaPassword= (TextView) findViewById(R.id.txtviewOlvidaPassword);
 

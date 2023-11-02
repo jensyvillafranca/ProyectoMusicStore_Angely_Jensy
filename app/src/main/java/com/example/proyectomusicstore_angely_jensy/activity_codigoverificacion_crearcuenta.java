@@ -1,6 +1,11 @@
 package com.example.proyectomusicstore_angely_jensy;
 
+import static com.example.proyectomusicstore_angely_jensy.activity_registrarse.form_apellidos;
 import static com.example.proyectomusicstore_angely_jensy.activity_registrarse.form_correo;
+import static com.example.proyectomusicstore_angely_jensy.activity_registrarse.form_nombres;
+import static com.example.proyectomusicstore_angely_jensy.activity_registrarse.form_password;
+import static com.example.proyectomusicstore_angely_jensy.activity_registrarse.form_usuario;
+import static com.example.proyectomusicstore_angely_jensy.activity_registrarse.verificationCode;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +32,10 @@ import java.util.Map;
 
 import android.os.Handler;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
 
 public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
@@ -36,6 +45,9 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
     EditText txtRecuperarRegistrarse;
 
     TextView txtviewVerificarEnviarNuevamente,txtviewActivaLetras;
+    String token = "Nulo"; /*Para mensajes push*/
+    String enlaceFoto = "Nulo";
+    int idVisualizacion = 1;
 
 
     /*Variables para el tiempo de reenvio del código*/
@@ -63,8 +75,8 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
             public void onClick(View v) {
                 //la función validar permite validar cuando los campos están vacios y lanza una alerta
                 if(validar() == true){
-
                     /*Aquí debe de ir el llamado a la ventana donde se encuentra el menú desplegable*/
+                    insertarUsuario();
 
                 }else{
                     /*Aquí debe de mostrarse el mensaje personalizado*/
@@ -112,7 +124,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
     /*Método para reenviar el código en caso de que el primero enviado ya este inactivo*/
     public void reenviarCodigoVerificacion() {
-        Log.d("Correo desde la otra ventana",form_correo);
+        //Log.d("Correo desde la otra ventana",form_correo);
         tiempoCodigo();
         String url = "https://phpclusters-152621-0.cloudclusters.net/verificacionCorreo.php";
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -123,6 +135,18 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getApplicationContext(), "Código mandado", Toast.LENGTH_LONG).show();
+                        try {
+                            // Convertir la respuesta en un objeto JSON
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            //Asignando a las variables status, message y verificationCode los valores que vienen del PHP
+                            //String status = jsonObject.getString("status");
+                            //String message = jsonObject.getString("message");
+                            verificationCode = jsonObject.getString("verification_code");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -187,5 +211,56 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    /*Metódo para insertar usuario en la base de datos, luego de verificar el código*/
+    public void insertarUsuario() {
+        /*Comparar que el código que el usuario ingresa, es el mismo del correo electrónico*/
+        String prueba = txtRecuperarRegistrarse.getText().toString();
+        Log.d("El del usuario", prueba);
+        Log.d("El código", verificationCode);
+
+
+        if(prueba.trim().equals(verificationCode)){
+
+            /*Mostrar mensaje de verificación completada*/
+            /*Insertar el usuario en la base de datos.*/
+
+            String url = "https://phpclusters-152474-0.cloudclusters.net/insertarUsuario.php";
+            RequestQueue queue = Volley.newRequestQueue(this);
+            StringRequest resultadoPost = new StringRequest(
+                    Request.Method.POST, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Toast.makeText(getApplicationContext(), "Usuario insertado exitosamente", Toast.LENGTH_LONG).show();
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), "Error " + error.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> parametros = new HashMap<>();
+                    parametros.put("nombres", form_nombres);
+                    parametros.put("apellidos", form_apellidos);
+                    parametros.put("correo", form_correo);
+                    parametros.put("usuario", form_usuario);
+                    parametros.put("contrasenia", form_password);
+                    parametros.put("token", token.toString());
+                    parametros.put("enlacefoto", enlaceFoto.toString());
+                    parametros.put("idvisualizacion", Integer.toString(idVisualizacion));
+                    return parametros;
+                }
+            };
+            queue.add(resultadoPost);
+        }else{
+            Toast.makeText(getApplicationContext(), "Código no válido", Toast.LENGTH_LONG).show();
+        }
     }
 }

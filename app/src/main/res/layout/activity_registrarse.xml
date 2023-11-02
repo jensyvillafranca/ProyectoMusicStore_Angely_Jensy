@@ -84,7 +84,7 @@
 
                 <!---Nombres txt-->
                 <EditText
-                    android:id="@+id/txtLoginUsuario"
+                    android:id="@+id/txtRegistrarNombres"
                     android:layout_width="155dp"
                     android:layout_height="28dp"
                     android:layout_marginTop="7dp"

@@ -20,6 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -29,12 +32,9 @@ public class activity_registrarse extends AppCompatActivity {
     /*Asignación de variables*/
     EditText nombres, apellidos,correo_electronico,usuario,password,confirmar_password;
     Button btn_insertar;
-    String token = "Nulo"; /*Para mensajes push*/
-    String enlaceFoto = "Nulo";
-    int idVisualizacion = 1;
 
     /*Variables públicas para utilizar en la pantalla de verificación para poder insertar en la base de datos el usuario*/
-    public static String form_nombres, form_apellidos, form_correo, form_usuario, form_password;
+    public static String form_nombres, form_apellidos, form_correo, form_usuario, form_password, verificationCode;
 
 
     TextView txtviewRegistrarCuentaCreada;
@@ -45,28 +45,15 @@ public class activity_registrarse extends AppCompatActivity {
         setContentView(R.layout.activity_registrarse);
 
         /*Relacionando las variables con el objeto de la interfaz*/
-        nombres = (EditText) findViewById(R.id.txtLoginUsuario);
-        /*Asignando a esa variable global el valor que el usuario escribe*/
-        form_nombres = nombres.getText().toString();
-
+        nombres = (EditText) findViewById(R.id.txtRegistrarNombres);
 
         /*Repetimos el proceso para las demás variables*/
         apellidos = (EditText) findViewById(R.id.txtRegistrarApellidos);
-        form_apellidos = apellidos.getText().toString();
-
         correo_electronico = (EditText) findViewById(R.id.txtRegistrarCorreo);
-        form_correo = correo_electronico.getText().toString();
-
         usuario = (EditText) findViewById(R.id.txtRegistrarUsuario);
-        form_usuario = usuario.getText().toString();
-
         password = (EditText) findViewById(R.id.txtRegistrarPassword);
-        form_password = password.getText().toString();
-
         confirmar_password = (EditText) findViewById(R.id.txtRegistrarConfirmarPassword);
-
         btn_insertar = (Button) findViewById(R.id.btnRegistrarEntrar);
-
         txtviewRegistrarCuentaCreada = (TextView) findViewById(R.id.txtviewRegistrarCuentaCreada);
 
 
@@ -104,6 +91,13 @@ public class activity_registrarse extends AppCompatActivity {
 
     /*Método para poder mandar el código de verificación*/
     public void enviarCodigoVerificacion() {
+        /*Asignando a esa variable global el valor que el usuario escribe*/
+        form_nombres = nombres.getText().toString();
+        form_apellidos = apellidos.getText().toString();
+        form_correo = correo_electronico.getText().toString();
+        form_usuario = usuario.getText().toString();
+        form_password = password.getText().toString();
+
         String url = "https://phpclusters-152621-0.cloudclusters.net/verificacionCorreo.php";
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -113,6 +107,19 @@ public class activity_registrarse extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getApplicationContext(), "Código mandado", Toast.LENGTH_LONG).show();
+
+                        try {
+                            // Convertir la respuesta en un objeto JSON
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            //Asignando a las variables status, message y verificationCode los valores que vienen del PHP
+                            //String status = jsonObject.getString("status");
+                            //String message = jsonObject.getString("message");
+                            verificationCode = jsonObject.getString("verification_code");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
