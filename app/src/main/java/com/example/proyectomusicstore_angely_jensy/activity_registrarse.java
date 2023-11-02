@@ -77,7 +77,6 @@ public class activity_registrarse extends AppCompatActivity {
                 //la función validar permite validar cuando los campos están vacios y lanza una alerta
                 if(validar() == true){
                     /*Manda a llamar la ventana de verificación de correo*/
-
                     enviarCodigoVerificacion();
                     Intent verificarCorreo = new Intent(getApplicationContext(),activity_codigoverificacion_crearcuenta.class);
                     startActivity(verificarCorreo);
@@ -103,6 +102,7 @@ public class activity_registrarse extends AppCompatActivity {
         expresiones_regulares();
     }
 
+    /*Método para poder mandar el código de verificación*/
     public void enviarCodigoVerificacion() {
         String url = "https://phpclusters-152621-0.cloudclusters.net/verificacionCorreo.php";
         RequestQueue queue = Volley.newRequestQueue(this);
