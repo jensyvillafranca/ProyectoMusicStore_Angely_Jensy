@@ -2,6 +2,7 @@ package com.example.proyectomusicstore_angely_jensy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.app.Dialog;
@@ -11,20 +12,44 @@ import android.widget.Button;
 
 public class botonpruebaa extends AppCompatActivity {
 
+    Button PruebaSeguir;
+    Button MostrarDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_botonpruebaa);
+        PruebaSeguir=findViewById(R.id.btnMostrarSeguirUsuario);
+        MostrarDialog=findViewById(R.id.btnMostrarDialog);
+        PruebaSeguir.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent PruebaSeguir = new Intent(getApplicationContext(),ActivityUsuarioBuscar.class);
+                startActivity(PruebaSeguir);
+            }
+        });
+
+        MostrarDialog.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent MostrarDialog = new Intent(getApplicationContext(),dialog_layout.class);
+                startActivity(MostrarDialog);
+            }
+        });
 
 
-            Button btnMostrarDialog = findViewById(R.id.btnMostrarDialog);
-            btnMostrarDialog.setOnClickListener(new View.OnClickListener() {
+        Button MostrarDialog = findViewById(R.id.btnMostrarDialog);
+        MostrarDialog.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mostrarDialog();
                 }
             });
         }
+
+
+
 
 
 
@@ -43,4 +68,7 @@ public class botonpruebaa extends AppCompatActivity {
 
             dialog.show();
     }
+
+
+
 }

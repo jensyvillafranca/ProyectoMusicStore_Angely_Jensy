@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="399dp"
-        android:layout_height="418dp"
+        android:layout_width="339dp"
+        android:layout_height="252dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/otrofondo"
+        android:src="@drawable/alertacamposvacios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -22,35 +22,34 @@
 
     <TextView
         android:id="@+id/textViewMensaje"
-        android:layout_width="272dp"
-        android:layout_height="33dp"
+        android:layout_width="248dp"
+        android:layout_height="88dp"
         android:fontFamily="@font/fuente_jost_global"
-        android:text="¡Los campos no pueden quedar vacíos!"
+        android:text="Asegúrate de llenar todos los campos que tiene el icono en rojo. Son requeridos para continuar."
         android:textAlignment="center"
         android:textColor="#766AFE"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="0.533" />
 
     <Button
         android:id="@+id/btnAceptar"
-        android:layout_width="75dp"
-        android:layout_height="44dp"
+        android:layout_width="113dp"
+        android:layout_height="34dp"
         android:layout_marginTop="6dp"
-        android:backgroundTint="#7E75FE"
+        android:backgroundTint="#60089A"
         android:fontFamily="@font/fuente_jost_global"
-        android:text="ok"
+        android:text="Entendido"
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewMensaje"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.038" />
 </androidx.constraintlayout.widget.ConstraintLayout>

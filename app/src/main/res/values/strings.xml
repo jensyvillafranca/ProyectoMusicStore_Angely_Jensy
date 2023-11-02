@@ -50,4 +50,42 @@
 
     <string name="ingreseNuevaContrasena">Ingrese una nueva contraseña</string>
     <string name="confirmaContrasena">Confirme su contraseña</string>
+    <string name="nombreUsuario">Nombre del usuario</string>
+    <string name="BuscarGrupo">Buscar usuario</string>
+
+
+
+
+
+
+
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="atras">Atrás</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="appName">Music Store HN</string>
+    <string name="NuevoGrupo">Nuevo Grupo</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="creador">Creado por</string>
+    <string name="integrantes">Integrantes</string>
+    <string name="grupos">Grupos</string>
+    <string name="inicio">Inicio</string>
+    <string name="usuarios">Usuarios</string>
+    <string name="buscar">Buscar</string>
+    <string name="multimedia">Multimedia</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="acercade">Acerca de</string>
+    <string name="resultBusqueda">Resultado de la búsqueda</string>
+    <string name="descripcion">Descripción:</string>
+    <string name="agregar_integrantes">Agregar Integrantes</string>
+    <string name="buscar_nombreUsuario">Buscar por nombre de usuario</string>
+    <string name="ingrese_nombreGrupo">Nombre del grupo</string>
+    <string name="ingrese_descripcion">Descripción</string>
+    <string name="crearGrupo">Crear Grupo</string>
+    <string name="integrante">Integrante</string>
+    <string name="musica">Musica</string>
+    <string name="video">Video</string>
+    <string name="verTodo">Vertodo</string>
+
 </resources>
