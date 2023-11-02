@@ -38,7 +38,7 @@
     <string name="RecuperarContra">Recuperar contraseña</string>
     <string name="RestaurarContra">Restaurar contraseña</string>
 
-    <string name="LabelRecuperarContra">Hemos enviado un código de verificación a tu dirección de correo. Por favor, introduce esta secuencia de números en la siguiente casilla de verificación </string>
+    <string name="LabelRecuperarContra">Hemos enviado un código de verificación a tu dirección de correo. Por favor, introduce esta secuencia de números en la siguiente casilla de verificación.</string>
     <string name="LinkEnviarDeNuevo2">Enviar de nuevo</string>
     <string name="VerificarCodigo">Verificar</string>
 
@@ -52,13 +52,6 @@
     <string name="confirmaContrasena">Confirme su contraseña</string>
     <string name="nombreUsuario">Nombre del usuario</string>
     <string name="BuscarGrupo">Buscar usuario</string>
-
-
-
-
-
-
-
 
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -87,5 +80,6 @@
     <string name="musica">Musica</string>
     <string name="video">Video</string>
     <string name="verTodo">Vertodo</string>
+    <string name="tituloConometro">Por favor, espera a que el tiempo finalice para poder solicitar un nuevo código.</string>
 
 </resources>

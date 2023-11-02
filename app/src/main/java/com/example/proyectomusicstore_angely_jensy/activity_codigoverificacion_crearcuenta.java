@@ -4,9 +4,11 @@ import static com.example.proyectomusicstore_angely_jensy.activity_registrarse.f
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,11 +35,11 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
     EditText txtRecuperarRegistrarse;
 
-    TextView txtviewVerificarEnviarNuevamente;
+    TextView txtviewVerificarEnviarNuevamente,txtviewActivaLetras;
 
 
     /*Variables para el tiempo de reenvio del código*/
-    private int segundos = 0; //segundos
+    private int segundos = 60; //segundos
     private TextView txtviewCronometro; //textview donde aparecera el cronometro
 
 
@@ -47,12 +49,12 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_codigoverificacion_crearcuenta);
 
-
         /*Amarrando los valores de las variables al objeto de la interfaz*/
         btnRecuperarRegistrarse = (Button) findViewById(R.id.btnRecuperarRegistrarse);
         txtRecuperarRegistrarse = (EditText) findViewById(R.id.txtRecuperarRegistrarse);
         txtviewVerificarEnviarNuevamente = (TextView) findViewById(R.id.txtviewVerificarEnviarNuevamente);
         txtviewCronometro = (TextView) findViewById(R.id.txtviewCronometro);
+        txtviewActivaLetras = (TextView) findViewById(R.id.txtviewActivaLetras);
 
 
         /*Evento para el botón que deja acceder a la pantalla principal de la aplicación de acuerdo al código de verificación correcto*/
@@ -75,8 +77,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 /*Llamado al método para el reenvio del código*/
-
-                tiempoCodigo();
+                segundos = 60;
                 reenviarCodigoVerificacion();
             }
         });
@@ -111,6 +112,8 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
     /*Método para reenviar el código en caso de que el primero enviado ya este inactivo*/
     public void reenviarCodigoVerificacion() {
+        Log.d("Correo desde la otra ventana",form_correo);
+        tiempoCodigo();
         String url = "https://phpclusters-152621-0.cloudclusters.net/verificacionCorreo.php";
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -144,6 +147,18 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
     /*Método para poner tiempo para reenvio del código*/
     public void tiempoCodigo(){
+        /*Mostrar el conómetro*/
+        txtviewCronometro.setVisibility(View.VISIBLE);
+
+        /*Para acceder al recurso string*/
+        txtviewActivaLetras.setText(R.string.tituloConometro);
+
+        /*Desabilitar la opción de solicitar un nuevo código*/
+        txtviewVerificarEnviarNuevamente.setEnabled(false);
+
+        /*Para cambiar el color al textview de "Enviar de nuevo"*/
+        txtviewVerificarEnviarNuevamente.setTextColor(Color.GRAY);
+
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
@@ -157,6 +172,18 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                 if (segundos > 0) {
                     segundos--;
                     handler.postDelayed(this, 1000);
+                }
+                if(segundos == 0){ //Habilitar la opción de mandar otro código una vez terminado el tiempo o cuándo este llega a 0
+                    txtviewVerificarEnviarNuevamente.setEnabled(true);
+
+                    /*Para limpiar el mensaje que de tiempo de espera*/
+                    txtviewActivaLetras.setText("");
+
+                    /*Para ocultar nuevamente el cronometro*/
+                    txtviewCronometro.setVisibility(View.INVISIBLE);
+
+                    /*Pasar a color blanco el textview de "Enviar de nuevo"*/
+                    txtviewVerificarEnviarNuevamente.setTextColor(Color.WHITE);
                 }
             }
         });

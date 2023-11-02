@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
 
                 // Abrir la actividad activity_principal
-                Intent intent = new Intent(MainActivity.this, botonpruebaa.class);
+                Intent intent = new Intent(MainActivity.this, activity_principal.class);
                 startActivity(intent);
                 finish(); // Cierra la actividad actual
             }
