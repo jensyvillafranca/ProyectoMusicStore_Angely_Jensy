@@ -267,7 +267,10 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
     private String encriptarPassword(String formPassword) {
         try {
+            //Instancia de MessageDigest para algoritmo SHA-256
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            //Convertiendo la contraseña en un arreglo de bytes utilizando codificación uth-8
             byte[] hash = digest.digest(formPassword.getBytes("UTF-8"));
             StringBuilder hexString = new StringBuilder();
 
