@@ -68,8 +68,7 @@ public class activity_registrarse extends AppCompatActivity {
                     startActivity(verificarCorreo);
                 }else{
                     /*Ventana personalizada*/
-                    activity_personalizado_advertencia ventanaModal = new activity_personalizado_advertencia();
-                    ventanaModal.show(getSupportFragmentManager(), "MiVentanaModal");
+                    mensajesPersonalizados();
                 }
             }
         });
@@ -78,7 +77,6 @@ public class activity_registrarse extends AppCompatActivity {
         txtviewRegistrarCuentaCreada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 /*Levantar un item para poder invocar la pantalla del login*/
                 Intent login = new Intent(getApplicationContext(),activity_login.class);
                 startActivity(login);
@@ -138,7 +136,6 @@ public class activity_registrarse extends AppCompatActivity {
                 return parametros;
             }
         };
-
         queue.add(resultadoPost);
     }
 
@@ -146,31 +143,78 @@ public class activity_registrarse extends AppCompatActivity {
 
     /*Validación para no dejar campos vacíos*/
     public boolean validar(){
-        TextView mensaje = findViewById(R.id.textViewMensajeAdvertencia);
-
         boolean retorna = true;
 
         if(nombres.getText().toString().isEmpty()){
-            mensaje.setText("Por favor, rellena el campo de nombres.");
             retorna = false;
         }
         if(apellidos.getText().toString().isEmpty()){
-            mensaje.setText("Por favor, rellena el campo de apellidos.");
             retorna = false;
         }
         if(correo_electronico.getText().toString().isEmpty()){
-            mensaje.setText("Por favor, rellena el campo de correo electrónico.");
             retorna = false;
         }
         if(usuario.getText().toString().isEmpty()){
-            mensaje.setText("Por favor, rellena el campo de usuario.");
             retorna = false;
         }
         if(password.getText().toString().isEmpty()){
-            mensaje.setText("Por favor, rellena el campo de contraseña");
+            retorna = false;
+        }
+        if(!password.getText().toString().equals(confirmar_password.getText().toString())){
+            retorna = false;
+        }
+        if(confirmar_password.getText().toString().isEmpty()){
+            retorna = false;
+        }
+        if(nombres.getText().toString().isEmpty() && apellidos.getText().toString().isEmpty() && correo_electronico.getText().toString().isEmpty() && usuario.getText().toString().isEmpty() && password.getText().toString().isEmpty() && confirmar_password.getText().toString().isEmpty()){
             retorna = false;
         }
         return retorna;
+    }
+
+    /*Mostrar mensajes personalizados*/
+    public void mensajesPersonalizados(){
+
+        if(nombres.getText().toString().isEmpty()){
+            String textoAdvertencia = "Por favor, rellena el campo de nombres.";
+            activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoAdvertencia);
+            dialogFragment.show(getSupportFragmentManager(), "advertencia");
+        }
+        if(apellidos.getText().toString().isEmpty()){
+            String textoAdvertencia = "Por favor, rellena el campo de apellidos.";
+            activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoAdvertencia);
+            dialogFragment.show(getSupportFragmentManager(), "advertencia");
+        }
+        if(correo_electronico.getText().toString().isEmpty()){
+            String textoAdvertencia = "Por favor, rellena el campo de correo electrónico.";
+            activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoAdvertencia);
+            dialogFragment.show(getSupportFragmentManager(), "advertencia");
+        }
+        if(usuario.getText().toString().isEmpty()){
+            String textoAdvertencia = "Por favor, rellena el campo de usuario.";
+            activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoAdvertencia);
+            dialogFragment.show(getSupportFragmentManager(), "advertencia");
+        }
+        if(password.getText().toString().isEmpty()){
+            String textoAdvertencia = "Por favor, rellena el campo de contraseña.";
+            activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoAdvertencia);
+            dialogFragment.show(getSupportFragmentManager(), "advertencia");
+        }
+        if(confirmar_password.getText().toString().isEmpty()){
+            String textoAdvertencia = "Por favor, rellena el campo de verificar contraseña.";
+            activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoAdvertencia);
+            dialogFragment.show(getSupportFragmentManager(), "advertencia");
+        }
+        if(!password.getText().toString().equals(confirmar_password.getText().toString())){
+            String textoAdvertencia = "Las contraseñas ingresadas no coonciden, verifique nuevamente";
+            activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoAdvertencia);
+            dialogFragment.show(getSupportFragmentManager(), "advertencia");
+        }
+        if(nombres.getText().toString().isEmpty() && apellidos.getText().toString().isEmpty() && correo_electronico.getText().toString().isEmpty() && usuario.getText().toString().isEmpty() && password.getText().toString().isEmpty() && confirmar_password.getText().toString().isEmpty()){
+            String textoAdvertencia = "¡No olvides rellenar los campos para completar tu proceso de creación de tu cuenta!";
+            activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoAdvertencia);
+            dialogFragment.show(getSupportFragmentManager(), "advertencia");
+        }
     }
 
 
