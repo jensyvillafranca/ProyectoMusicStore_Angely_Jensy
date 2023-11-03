@@ -272,8 +272,11 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
             //Convertiendo la contraseña en un arreglo de bytes utilizando codificación uth-8
             byte[] hash = digest.digest(formPassword.getBytes("UTF-8"));
+
+            //Se crea una instancia de StringBuilder
             StringBuilder hexString = new StringBuilder();
 
+            //for-each que recorre cada byte en el arreglo de hash
             for (byte b : hash) {
                 String hex = Integer.toHexString(0xff & b);
                 if(hex.length() == 1) hexString.append('0');

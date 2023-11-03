@@ -68,7 +68,8 @@ public class activity_registrarse extends AppCompatActivity {
                     Intent verificarCorreo = new Intent(getApplicationContext(),activity_codigoverificacion_crearcuenta.class);
                     startActivity(verificarCorreo);
                 }else{
-                    /*Aquí debe de mostrarse el mensaje personalizado*/
+                    /*Ventana personalizada*/
+                    setContentView(R.layout.activity_dialog_layout);
                 }
             }
         });
@@ -146,9 +147,6 @@ public class activity_registrarse extends AppCompatActivity {
     /*Validación para no dejar campos vacíos*/
     public boolean validar(){
         boolean retorna = true;
-        String hola = String.valueOf(nombres.getText());
-        Log.d("Hola", hola);
-
 
         if(nombres.getText().toString().isEmpty()){
             nombres.setError("Campo nombres vacío");
