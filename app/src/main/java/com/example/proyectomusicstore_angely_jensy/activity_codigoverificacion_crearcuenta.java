@@ -109,13 +109,15 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
     }
 
     public boolean validar(){
+        TextView mensaje = findViewById(R.id.textViewMensajeConfirmar);
+
         boolean retorna = true;
         if(txtRecuperarRegistrarse.getText().toString().isEmpty()){
-            txtRecuperarRegistrarse.setError("Confirmación de código vacío");
+            mensaje.setText("No se permite este campo vacío. Por favor, ingresa tu código de confirmación.");
             retorna = false;
         }
         if(txtRecuperarRegistrarse.getText().toString().length() < 6 || txtRecuperarRegistrarse.getText().toString().length() > 6){
-            txtRecuperarRegistrarse.setError("Código de verificación incompleto");
+            mensaje.setText("El código de confirmación debe constar de seis dígitos exactos; por favor, asegúrese de que el código proporcionado esté completo.");
             retorna = false;
         }
         return retorna;
@@ -125,6 +127,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
     /*Método para reenviar el código en caso de que el primero enviado ya este inactivo*/
     public void reenviarCodigoVerificacion() {
+        TextView mensajeConfirmacion = findViewById(R.id.textViewMensajeConfirmar);
         //Log.d("Correo desde la otra ventana",form_correo);
         tiempoCodigo();
         String url = "https://phpclusters-152621-0.cloudclusters.net/verificacionCorreo.php";
@@ -135,7 +138,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "Código mandado", Toast.LENGTH_LONG).show();
+                        mensajeConfirmacion.setText("¡Código reenviado con exito! Por favor revisa tu correo electrónico");
                         try {
                             // Convertir la respuesta en un objeto JSON
                             JSONObject jsonObject = new JSONObject(response);
@@ -217,6 +220,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
     /*Metódo para insertar usuario en la base de datos, luego de verificar el código*/
     public void insertarUsuario() {
+        TextView mensajeConfirmacion = findViewById(R.id.textViewMensajeConfirmar);
         /*Comparar que el código que el usuario ingresa, es el mismo del correo electrónico*/
         String prueba = txtRecuperarRegistrarse.getText().toString();
         Log.d("El del usuario", prueba);
@@ -235,7 +239,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Toast.makeText(getApplicationContext(), "Usuario insertado exitosamente", Toast.LENGTH_LONG).show();
+                            mensajeConfirmacion.setText("¡Usuario insertado exitosamente!");
                         }
                     },
                     new Response.ErrorListener() {

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Spanned;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -69,7 +68,8 @@ public class activity_registrarse extends AppCompatActivity {
                     startActivity(verificarCorreo);
                 }else{
                     /*Ventana personalizada*/
-                    setContentView(R.layout.activity_dialog_layout);
+                    activity_personalizado_advertencia ventanaModal = new activity_personalizado_advertencia();
+                    ventanaModal.show(getSupportFragmentManager(), "MiVentanaModal");
                 }
             }
         });
@@ -146,26 +146,28 @@ public class activity_registrarse extends AppCompatActivity {
 
     /*Validación para no dejar campos vacíos*/
     public boolean validar(){
+        TextView mensaje = findViewById(R.id.textViewMensajeAdvertencia);
+
         boolean retorna = true;
 
         if(nombres.getText().toString().isEmpty()){
-            nombres.setError("Campo nombres vacío");
+            mensaje.setText("Por favor, rellena el campo de nombres.");
             retorna = false;
         }
         if(apellidos.getText().toString().isEmpty()){
-            apellidos.setError("Campo apellidos vacío");
+            mensaje.setText("Por favor, rellena el campo de apellidos.");
             retorna = false;
         }
         if(correo_electronico.getText().toString().isEmpty()){
-            correo_electronico.setError("Campo correo electrónico vacío");
+            mensaje.setText("Por favor, rellena el campo de correo electrónico.");
             retorna = false;
         }
         if(usuario.getText().toString().isEmpty()){
-            usuario.setError("Campo usuario vacío");
+            mensaje.setText("Por favor, rellena el campo de usuario.");
             retorna = false;
         }
         if(password.getText().toString().isEmpty()){
-            password.setError("Campo password vacío");
+            mensaje.setText("Por favor, rellena el campo de contraseña");
             retorna = false;
         }
         return retorna;

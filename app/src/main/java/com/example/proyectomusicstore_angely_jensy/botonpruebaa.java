@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.app.Dialog;
-
 import android.view.View;
 import android.widget.Button;
 
@@ -33,7 +31,7 @@ public class botonpruebaa extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent MostrarDialog = new Intent(getApplicationContext(),dialog_layout.class);
+                Intent MostrarDialog = new Intent(getApplicationContext(), activity_personalizado_advertencia.class);
                 startActivity(MostrarDialog);
             }
         });
@@ -43,7 +41,8 @@ public class botonpruebaa extends AppCompatActivity {
         MostrarDialog.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mostrarDialog();
+
+                    //mostrarDialog();
                 }
             });
         }
@@ -54,7 +53,7 @@ public class botonpruebaa extends AppCompatActivity {
 
 
 
-        private void mostrarDialog() {
+       /* private void mostrarDialog() {
             final Dialog dialog = new Dialog(this);
             dialog.setContentView(R.layout.activity_dialog_layout);
 
@@ -67,7 +66,7 @@ public class botonpruebaa extends AppCompatActivity {
             });
 
             dialog.show();
-    }
+    }*/
 
 
 
