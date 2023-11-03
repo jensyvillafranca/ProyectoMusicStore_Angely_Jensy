@@ -27,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -251,7 +252,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                     parametros.put("apellidos", form_apellidos);
                     parametros.put("correo", form_correo);
                     parametros.put("usuario", form_usuario);
-                    parametros.put("contrasenia", form_password);
+                    parametros.put("contrasenia",  encriptarPassword(form_password));
                     parametros.put("token", token.toString());
                     parametros.put("enlacefoto", enlaceFoto.toString());
                     parametros.put("idvisualizacion", Integer.toString(idVisualizacion));
@@ -261,6 +262,23 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
             queue.add(resultadoPost);
         }else{
             Toast.makeText(getApplicationContext(), "Código no válido", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String encriptarPassword(String formPassword) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(formPassword.getBytes("UTF-8"));
+            StringBuilder hexString = new StringBuilder();
+
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if(hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
     }
 }
