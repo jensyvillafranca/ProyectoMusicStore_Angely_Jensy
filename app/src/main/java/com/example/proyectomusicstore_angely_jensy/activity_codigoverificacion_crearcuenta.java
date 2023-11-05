@@ -35,7 +35,7 @@ import android.os.Handler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import org.mindrot.jbcrypt.BCrypt;
 
 
 public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
@@ -272,7 +272,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                     parametros.put("apellidos", form_apellidos);
                     parametros.put("correo", form_correo);
                     parametros.put("usuario", form_usuario);
-                    parametros.put("contrasenia",  encriptarPassword(form_password));
+                    parametros.put("contrasenia", encriptarPassword(form_password));
                     parametros.put("token", token.toString());
                     parametros.put("enlacefoto", enlaceFoto.toString());
                     parametros.put("idvisualizacion", Integer.toString(idVisualizacion));
@@ -286,26 +286,8 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
     }
 
     /*Encriptar todas las contraseñas*/
-    private String encriptarPassword(String formPassword) {
-        try {
-            //Instancia de MessageDigest para algoritmo SHA-256
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-
-            //Convertiendo la contraseña en un arreglo de bytes utilizando codificación uth-8
-            byte[] hash = digest.digest(formPassword.getBytes("UTF-8"));
-
-            //Se crea una instancia de StringBuilder
-            StringBuilder hexString = new StringBuilder();
-
-            //for-each que recorre cada byte en el arreglo de hash
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if(hex.length() == 1) hexString.append('0');
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
+    public static String encriptarPassword(String passwordPlana) {
+        String salt = BCrypt.gensalt(10);
+        return BCrypt.hashpw(passwordPlana, salt);
     }
 }
