@@ -36,6 +36,7 @@ public class activity_login extends AppCompatActivity {
     TextView txtviewOlvidaPassword;
     Button btnLoginEntrar, btnLoginRegistrarse;
     String contraseniaParaClave = "programacionMovil1";
+    Boolean estadoLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,13 +109,37 @@ public class activity_login extends AppCompatActivity {
                         try {
                             // Convertir la respuesta String en un JSONObject
                             JSONObject jsonObject = new JSONObject(response);
-                            String password = jsonObject.getString("contrasenia");
-                            Log.d("Mostrando",password);
-
-                            /*Comparar este hash contra la contra del usuario pero hasheada*/
-                            permitirLogin(txtLoginPassword.getText().toString(),password);
 
 
+                            /*Parte donde se obtiene si el usuario existe o no*/
+                            String estadoJson = jsonObject.getString("error");
+                            if(estadoJson == "false"){ //si el usuario existe
+                                /*Obtener el hash de la contra correcto para ese usuario que esta intentando loguiarse*/
+                                String password = jsonObject.getString("contrasenia");
+                                /*Comparar este hash contra el pass que el usuario digita en texto plano*/
+                                if((permitirLogin(txtLoginPassword.getText().toString(),password) == true)){
+
+                                    String textoLogin = "¡Estamos encantados de tenerte de vuelta!. Por favor, dirígete a la pantalla principal para explorar todas las funcionalidades de nuestra aplicación";
+                                    activity_personalizado_confirmacion_correcta dialogFragment = activity_personalizado_confirmacion_correcta.newInstance(textoLogin);
+                                    dialogFragment.show(getSupportFragmentManager(), "acceso");
+
+                                }else {
+                                    /*Mandar a llamar ventana personalizada para decir credenciales inválidas*/
+                                    String textoLogin = "¡Credenciales inválidas!";
+                                    activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoLogin);
+                                    dialogFragment.show(getSupportFragmentManager(), "advertencia");
+                                }
+                            }else{//si el usuario no existe.
+                                /*Mandar a llamar ventana personalizada para recomendar crear una cuenta*/
+                                String textoLogin = "¡Vaya! Parece que todavía no tienes una cuenta con nosotros. Pulsa en el botón de registrarse para crear una. ¡Es rápido y fácil!";
+                                activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoLogin);
+                                dialogFragment.show(getSupportFragmentManager(), "advertencia");
+                            }
+
+
+
+
+                            /*****/
                         } catch (JSONException e) {
                             e.printStackTrace();
                             // Manejar la excepción si el string no es un JSON válido o si las claves no existen
@@ -192,14 +217,16 @@ public class activity_login extends AppCompatActivity {
     }
 
     /*Metodo para verificar si la contraseña en texto plano coincide con el hash específico de la BD*/
-    public void permitirLogin(String passwordPlano, String hash){
+    public boolean permitirLogin(String passwordPlano, String hash){
         /*Verificar la contraseña*/
         boolean doesMatch = BCrypt.checkpw(passwordPlano, hash);
         if (doesMatch) {
-            Log.d("BCrypt", "La contraseña es correcta.");
+            Log.d("BCrypt", "La contraseña es correcta");
+            estadoLogin = true;
         } else {
-            Log.d("BCrypt", "La contraseña es incorrecta.");
+            Log.d("BCrypt", "La contraseña es incorrecta");
+            estadoLogin = false;
         }
-
+        return estadoLogin;
     }
 }
