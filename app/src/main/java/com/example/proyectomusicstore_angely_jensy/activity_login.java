@@ -17,6 +17,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
@@ -89,35 +93,50 @@ public class activity_login extends AppCompatActivity {
     /*Metódo para validar credenciales de autenticación*/
     private void validarUsuarioPassword() throws Exception {
         final String encriptarUser = encriptarUsuario(txtLoginUsuario.getText().toString(), contraseniaParaClave);
-        final String encriptarPass = encriptarPassword(txtLoginPassword.getText().toString(), contraseniaParaClave);
 
         String url = "https://phpclusters-152621-0.cloudclusters.net/busquedaAutenticacion.php";
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest resultadoPost = new StringRequest(
-                Request.Method.POST, url,
-                new Response.Listener<String>() {
+
+        // Crear una solicitud de objeto JSON
+        StringRequest stringRequest = new StringRequest
+                (Request.Method.POST, url, new Response.Listener<String>() {
+
                     @Override
                     public void onResponse(String response) {
-                        /*Aquí es donde debere comprobar si hay autenticación o no*/
-                        Log.d("Mensaje",response);
+                        Log.d("Respuesta", response.toString());
+
+                        try {
+                            // Convertir la respuesta String en un JSONObject
+                            JSONObject jsonObject = new JSONObject(response);
+                            String password = jsonObject.getString("contrasenia");
+                            Log.d("Mostrando",password);
+
+                            /*Comparar este hash contra la contra del usuario pero hasheada*/
+                            permitirLogin(txtLoginPassword.getText().toString(),password);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            // Manejar la excepción si el string no es un JSON válido o si las claves no existen
+                        }
                     }
-                },
-                new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
+
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Mensaje","NO VIENE UNA RESPUESTA : )");
+                        // Manejar el error
+                        error.printStackTrace();
                     }
-                }
-        ) {
+                }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("encrypted_user", encriptarUser); // Envías los datos encriptados como parámetro
-                params.put("encrypted_password", encriptarPass);
+                params.put("encrypted_user", encriptarUser.trim()); // Envías los datos encriptados como parámetro
+                //params.put("encrypted_password", encriptarPass.trim());
                 return params;
             }
         };
-        queue.add(resultadoPost);
+        queue.add(stringRequest);
     }
 
 
@@ -129,13 +148,13 @@ public class activity_login extends AppCompatActivity {
             byte[] encVal = c.doFinal(usuario.getBytes());
             return Base64.encodeToString(encVal, Base64.DEFAULT);
         }
-        public static String encriptarPassword(String pass, String password) throws Exception {
+        /*public static String encriptarPassword(String pass, String password) throws Exception {
             SecretKeySpec key = generateKey(password);
             Cipher c = Cipher.getInstance("AES");
             c.init(Cipher.ENCRYPT_MODE, key); // aquí es donde se utiliza la clave para desencriptar, esta clave viene del metódod de abajo
             byte[] encVal = c.doFinal(pass.getBytes());
             return Base64.encodeToString(encVal, Base64.DEFAULT);
-        }
+        }*/
 
 
         /*Generar una clave secreta para ser utilizada para encriptar y desencriptar los datos con el algoritmo AES*/
@@ -172,5 +191,15 @@ public class activity_login extends AppCompatActivity {
         }
     }
 
+    /*Metodo para verificar si la contraseña en texto plano coincide con el hash específico de la BD*/
+    public void permitirLogin(String passwordPlano, String hash){
+        /*Verificar la contraseña*/
+        boolean doesMatch = BCrypt.checkpw(passwordPlano, hash);
+        if (doesMatch) {
+            Log.d("BCrypt", "La contraseña es correcta.");
+        } else {
+            Log.d("BCrypt", "La contraseña es incorrecta.");
+        }
 
+    }
 }
