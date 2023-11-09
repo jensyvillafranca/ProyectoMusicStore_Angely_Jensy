@@ -9,6 +9,7 @@ import static com.example.proyectomusicstore_angely_jensy.activity_registrarse.v
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -257,6 +258,18 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                             String textoConfirmacion = "¡Tu cuenta ha sido creada exitosamente!";
                             activity_personalizado_confirmacion_correcta dialogFragment = activity_personalizado_confirmacion_correcta.newInstance(textoConfirmacion);
                             dialogFragment.show(getSupportFragmentManager(), "confirmacion");
+
+
+                            // Crear un Handler para posponer la ejecución del código
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // Este código se ejecutará después del tiempo de retraso
+                                    Intent intent = new Intent(getApplicationContext(), activity_login.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }, 5000); // 8 segundos
                         }
                     },
                     new Response.ErrorListener() {

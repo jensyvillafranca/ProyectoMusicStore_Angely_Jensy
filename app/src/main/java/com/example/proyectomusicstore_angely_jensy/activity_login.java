@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.Base64;
@@ -137,10 +138,17 @@ public class activity_login extends AppCompatActivity {
                                     //acceso.mostrarToken();
                                     //acceso.recuperarTokenFromKeystore();
 
-                                    /*ESTO SOLO ES DE PRUEBA*/
-                                    Intent intent = new Intent(getApplicationContext(), activity_principal_falsa.class);
-                                    startActivity(intent);
-                                    finish();
+                                    // Crear un Handler para posponer la ejecución del código
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            /*ESTO SOLO ES DE PRUEBA*/
+                                            Intent intent = new Intent(getApplicationContext(), activity_principal_falsa.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }, 5000); // 8 segundos
+
 
                                 }else {
                                     /*Mandar a llamar ventana personalizada para decir credenciales inválidas*/
