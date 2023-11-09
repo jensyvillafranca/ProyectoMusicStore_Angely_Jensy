@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ProyectoMusicStore_Angely_Jensy"
         tools:targetApi="31">
         <activity
+            android:name=".activity_principal_falsa"
+            android:exported="false" />
+        <activity
             android:name=".activity_personalizado_confirmacion_correcta"
             android:exported="false" />
         <activity

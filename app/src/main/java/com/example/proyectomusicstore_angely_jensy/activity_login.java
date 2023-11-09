@@ -3,12 +3,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -89,6 +92,7 @@ public class activity_login extends AppCompatActivity {
                 startActivity(recuperarContra);
             }
         });
+        expresiones_regulares();
     }
 
     /*Metódo para validar credenciales de autenticación*/
@@ -113,6 +117,7 @@ public class activity_login extends AppCompatActivity {
 
                             /*Parte donde se obtiene si el usuario existe o no*/
                             String estadoJson = jsonObject.getString("error");
+
                             if(estadoJson == "false"){ //si el usuario existe
                                 /*Obtener el hash de la contra correcto para ese usuario que esta intentando loguiarse*/
                                 String password = jsonObject.getString("contrasenia");
@@ -122,6 +127,20 @@ public class activity_login extends AppCompatActivity {
                                     String textoLogin = "¡Estamos encantados de tenerte de vuelta!. Por favor, dirígete a la pantalla principal para explorar todas las funcionalidades de nuestra aplicación";
                                     activity_personalizado_confirmacion_correcta dialogFragment = activity_personalizado_confirmacion_correcta.newInstance(textoLogin);
                                     dialogFragment.show(getSupportFragmentManager(), "acceso");
+
+                                    /*Obteniendo el token que se genera cuando el usuario se loguea*/
+                                    String token = jsonObject.getString("token");
+                                    /*Metodo para guardar ese token en el keystore*/
+                                    //guardarToken();
+                                    token acceso = new token(getApplicationContext());
+                                    acceso.guardarTokenToKeystore(token);
+                                    //acceso.mostrarToken();
+                                    //acceso.recuperarTokenFromKeystore();
+
+                                    /*ESTO SOLO ES DE PRUEBA*/
+                                    Intent intent = new Intent(getApplicationContext(), activity_principal_falsa.class);
+                                    startActivity(intent);
+                                    finish();
 
                                 }else {
                                     /*Mandar a llamar ventana personalizada para decir credenciales inválidas*/
@@ -135,10 +154,6 @@ public class activity_login extends AppCompatActivity {
                                 activity_personalizado_advertencia dialogFragment = activity_personalizado_advertencia.newInstance(textoLogin);
                                 dialogFragment.show(getSupportFragmentManager(), "advertencia");
                             }
-
-
-
-
                             /*****/
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -228,5 +243,55 @@ public class activity_login extends AppCompatActivity {
             estadoLogin = false;
         }
         return estadoLogin;
+    }
+
+    public void expresiones_regulares() {
+
+        InputFilter filtroContraseniaLogin = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String permitidos = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0-9!@#$%^*()_-+={}[]|\\:;,.<>?/\"~";
+                for (int i = start; i < end; i++) {
+                    char currentChar = source.charAt(i);
+                    if (!(Character.isLowerCase(currentChar) || Character.isDigit(currentChar) ||
+                            permitidos.indexOf(currentChar) != -1)) {
+                        mostrarMensajeError("Los espacios y los caracteres (&) y (') no estan permitidos");
+                        return "";
+                    }
+                    if (Character.isWhitespace(currentChar)) {
+                        mostrarMensajeError("Los espacios no están permitidos.");
+                        return "";
+                    }
+                }
+                return null; // Accept the original value
+            }
+        };
+
+        InputFilter filtroUsuarioLogin = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String permitidos = "a-z0-9._";
+
+                for (int i = start; i < end; i++) {
+                    char currentChar = source.charAt(i);
+                    if (!(Character.isLowerCase(currentChar) || Character.isDigit(currentChar) ||
+                            permitidos.indexOf(currentChar) != -1)) {
+                        mostrarMensajeError("Los nombres de usuario solo pueden contener letras del alfabeto en minúsculas (a - z), números, guiones bajos y puntos.");
+                        return "";
+                    }
+                    if (Character.isWhitespace(currentChar)) {
+                        mostrarMensajeError("No puede utilizar espacios.");
+                        return "";
+                    }
+                }
+                return null; // Accept the original value
+            }
+        };
+        txtLoginUsuario.setFilters(new InputFilter[]{filtroUsuarioLogin});
+        txtLoginPassword.setFilters(new InputFilter[]{filtroContraseniaLogin});
+    }
+
+    private void mostrarMensajeError(String mensaje) {
+        // Aquí puedes implementar la lógica para mostrar el mensaje de error, por ejemplo, usando un TextView o un Toast.
+        // Ejemplo con Toast:
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 }

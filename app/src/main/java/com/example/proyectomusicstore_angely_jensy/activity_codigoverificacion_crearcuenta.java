@@ -47,8 +47,10 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
 
     TextView txtviewVerificarEnviarNuevamente,txtviewActivaLetras;
     String token = "Nulo"; /*Para mensajes push*/
-    String enlaceFoto = "Nulo";
+    String enlaceFoto = "https://storage.googleapis.com/proyectogrupo1musicstore.appspot.com/imagenesPerfil/avatar.png";
     int idVisualizacion = 1;
+
+    int idEstado = 1;
 
 
     /*Variables para el tiempo de reenvio del código*/
@@ -78,7 +80,6 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                 if(validar() == true){
                     /*Aquí debe de ir el llamado a la ventana donde se encuentra el menú desplegable*/
                     insertarUsuario();
-
                 }else{
                     /*Ventana personalizada*/
                     mensajesPersonalizadas();
@@ -276,6 +277,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                     parametros.put("token", token.toString());
                     parametros.put("enlacefoto", enlaceFoto.toString());
                     parametros.put("idvisualizacion", Integer.toString(idVisualizacion));
+                    parametros.put("idestado", Integer.toString(idEstado));
                     return parametros;
                 }
             };

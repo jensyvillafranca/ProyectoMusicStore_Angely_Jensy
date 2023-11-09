@@ -18,10 +18,15 @@ public class MainActivity extends AppCompatActivity {
     private ImageView gifImageView;
     private ProgressBar progressBar;
 
+    private token acceso;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        acceso = new token(this);
 
         gifImageView = findViewById(R.id.gifImageView);
         progressBar = findViewById(R.id.progressBar);
@@ -53,10 +58,37 @@ public class MainActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
 
                 // Abrir la actividad activity_principal
-                Intent intent = new Intent(MainActivity.this, activity_principal.class);
+
+                if (usuarioEstaLogueado()) {
+                    irAPantallaPrincipal();
+                } else {
+                    irAPantallaLogin();
+                }
+
+
+                /*Intent intent = new Intent(MainActivity.this, activity_principal.class);
                 startActivity(intent);
-                finish(); // Cierra la actividad actual
+                finish(); // Cierra la actividad actual*/
             }
         }, 5000); // 5000 milisegundos (5 segundos)
+    }
+
+    private boolean usuarioEstaLogueado() {
+        String token = acceso.recuperarTokenFromKeystore();
+        return token != null && !token.isEmpty();
+    }
+
+    private void irAPantallaPrincipal() {
+        // Intent para ir a la actividad principal de la app
+        Intent intent = new Intent(this, activity_principal_falsa.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void irAPantallaLogin() {
+        // Intent para ir a la actividad de inicio de sesión
+        Intent intent = new Intent(this, activity_principal.class);
+        startActivity(intent);
+        finish();
     }
 }

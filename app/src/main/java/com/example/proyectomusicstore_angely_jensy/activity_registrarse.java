@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Spanned;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -87,6 +88,14 @@ public class activity_registrarse extends AppCompatActivity {
         /*Llamada al método de validar expresiones regulares*/
         expresiones_regulares();
     }
+    // Método para validar el formato del correo electrónico
+    private boolean validarCorreoElectronico(String email) {
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /*Método para poder mandar el código de verificación*/
     public void enviarCodigoVerificacion() {
@@ -137,6 +146,11 @@ public class activity_registrarse extends AppCompatActivity {
             }
         };
         queue.add(resultadoPost);
+    }
+    // Función para validar el formato del correo electrónico
+    private boolean isValidEmail(String email) {
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        return email.matches(emailPattern);
     }
 
 
@@ -222,8 +236,8 @@ public class activity_registrarse extends AppCompatActivity {
       Solo letras, no permite acentos, ni caracteres especiales, ni mayúsculas, ni numéros y un espacio*/
 
     public void expresiones_regulares(){
-
         //Filtro para los campos de nombres y apellidos
+
         InputFilter soloLetras = new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
@@ -239,39 +253,33 @@ public class activity_registrarse extends AppCompatActivity {
             }
         };
 
-        //Filtro para el correo electrónico
-        InputFilter correoFiltro = new InputFilter() {
+        // Filtro para el correo electrónico
+        InputFilter filtroCorreo = new InputFilter() {
+
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                StringBuilder builder = new StringBuilder(dest);
-
-                builder.replace(dstart, dend, source.subSequence(start, end).toString());
-
-                int atCount = 0;
-                int dotCount = 0;
-                for (int i = 0; i < builder.length(); i++) {
-                    char c = builder.charAt(i);
-                    if (c == '@') {
-                        atCount++;
-                    } else if (c == '.') {
-                        dotCount++;
-                    }
-                }
-
-                if (atCount > 1 || dotCount > 1) {
-                    return "";
-                }
+                String permitidos = "@._";
 
                 for (int i = start; i < end; i++) {
                     char currentChar = source.charAt(i);
-                    if (!(Character.isLowerCase(currentChar) || Character.isDigit(currentChar) || currentChar == '@' || currentChar == '.')) {
+                    if (!(Character.isLowerCase(currentChar) || Character.isDigit(currentChar) ||
+                            permitidos.indexOf(currentChar) != -1)) {
+                        mostrarMensajeError("Los caracteres que unicamente estan permitidos son (_)(@)(.) y las letras minúsculas del alfabeto (a - z).");
+                        return "";
+                    }
+                    if (Character.isWhitespace(currentChar)) {
+                        mostrarMensajeError("Los espacios no están permitidos.");
                         return "";
                     }
                 }
-
                 return null;
             }
         };
+
+
+
+
+
 
         /*Expresión regular para usuario en donde no se permite ingresar los siguientes cáracteres:
          ''
@@ -288,8 +296,16 @@ public class activity_registrarse extends AppCompatActivity {
          y el asterisco*/
         InputFilter usuarioContrasenia = new InputFilter() {
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String permitidos = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0-9!@#$%^*()_-+={}[]|\\:;,.<>?/\"~";
                 for (int i = start; i < end; i++) {
-                    if (!Pattern.compile("^[^,#'\";\\-/\\*=>&%<!\\(\\)\\?]+$").matcher(String.valueOf(source.charAt(i))).matches()) {
+                    char currentChar = source.charAt(i);
+                    if (!(Character.isLowerCase(currentChar) || Character.isDigit(currentChar) ||
+                            permitidos.indexOf(currentChar) != -1)) {
+                        mostrarMensajeError("Los espacios y los caracteres (&) y (') no estan permitidos");
+                        return "";
+                    }
+                    if (Character.isWhitespace(currentChar)) {
+                        mostrarMensajeError("Los espacios no están permitidos.");
                         return "";
                     }
                 }
@@ -297,10 +313,66 @@ public class activity_registrarse extends AppCompatActivity {
             }
         };
 
+        InputFilter usuarioContraseniaConfirmar = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String permitidos = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0-9!@#$%^*()_-+={}[]|\\:;,.<>?/\"~";
+
+                for (int i = start; i < end; i++) {
+                    char currentChar = source.charAt(i);
+                    if (!(Character.isLowerCase(currentChar) || Character.isDigit(currentChar) ||
+                            permitidos.indexOf(currentChar) != -1)) {
+                        mostrarMensajeError("Los espacios y los caracteres (&) y (') no estan permitidos");
+                        return "";
+                    }
+                    if (Character.isWhitespace(currentChar)) {
+                        mostrarMensajeError("Los espacios no están permitidos.");
+                        return "";
+                    }
+                }
+                return null; // Accept the original value
+            }
+        };
+        InputFilter filtroUsuario = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String permitidos = "a-z0-9._";
+
+                for (int i = start; i < end; i++) {
+                    char currentChar = source.charAt(i);
+                    if (!(Character.isLowerCase(currentChar) || Character.isDigit(currentChar) ||
+                            permitidos.indexOf(currentChar) != -1)) {
+                        mostrarMensajeError("Los nombres de usuario solo pueden contener letras del alfabeto en minúsculas (a - z), números, guiones bajos y puntos.");
+                        return "";
+                    }
+                    if (Character.isWhitespace(currentChar)) {
+                        mostrarMensajeError("No puede utilizar espacios.");
+                        return "";
+                    }
+                }
+                return null; // Accept the original value
+            }
+        };
+
+// Aplicar el filtro al EditText
+        // Reemplaza 'R.id.miEditText' con el ID de tu EditText
+
         nombres.setFilters(new InputFilter[]{soloLetras});
         apellidos.setFilters(new InputFilter[]{soloLetras});
-        correo_electronico.setFilters(new InputFilter[]{correoFiltro});
-        usuario.setFilters(new InputFilter[]{usuarioContrasenia});
+        correo_electronico.setFilters(new InputFilter[]{filtroCorreo});
+
+        usuario.setFilters(new InputFilter[]{filtroUsuario});
+        password.setFilters(new InputFilter[]{usuarioContrasenia});
+        confirmar_password.setFilters(new InputFilter[]{usuarioContraseniaConfirmar});
         //la contra viaja encriptada.
+    }
+    // Define una función para mostrar el mensaje de error
+    private void mostrarMensajeError(String mensaje) {
+        // Aquí puedes implementar la lógica para mostrar el mensaje de error, por ejemplo, usando un TextView o un Toast.
+        // Ejemplo con Toast:
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    // Define una función para ocultar el mensaje de error
+    private void ocultarMensajeError() {
+        // Aquí puedes implementar la lógica para ocultar el mensaje de error, si es necesario.
     }
 }

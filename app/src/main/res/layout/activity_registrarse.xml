@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondodetodaslaspantallas"
+    android:textAlignment="textEnd"
     tools:context=".activity_registrarse">
 
 
@@ -57,22 +58,22 @@
                     android:id="@+id/txtviewRegistrarNombres"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/txtviewRegistrarNombres"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtviewRegistrarApellidos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="110dp"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/txtviewRegistrarApellidos"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,7 +82,7 @@
                 android:layout_height="46dp"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
-
+                <!---Nombres txt-->
                 <!---Nombres txt-->
                 <EditText
                     android:id="@+id/txtRegistrarNombres"
@@ -121,11 +122,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-2dp"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/txtviewRegistrarCorreo"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/txtRegistrarCorreo"
@@ -139,15 +140,26 @@
 
                 <!---Usuario-->
                 <TextView
+                    android:id="@+id/errorMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-3dp"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#E80909"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/txtviewRegistrarUsuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/txtviewRegistrarUsuario"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/txtRegistrarUsuario"
@@ -158,18 +170,17 @@
                     android:inputType="text"
                     android:padding="6dp"
                     android:textSize="15sp"></EditText>
-
                 <!---Contraseña-->
                 <TextView
                     android:id="@+id/txtviewRegistrarPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/txtviewRegistrarPassword"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/txtRegistrarPassword"
@@ -187,11 +198,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/txtviewRegistrarConfirmarPassword"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/txtRegistrarConfirmarPassword"
@@ -225,16 +236,13 @@
                     android:id="@+id/txtviewRegistrarHuella"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:paddingLeft="10dp"
                     android:paddingTop="13dp"
                     android:text="@string/txtviewRegistrarHuella"
                     android:textColor="#FFFFFF"
                     android:textSize="10dp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold">
-                </TextView>
-
-
+                    android:textStyle="bold"></TextView>
                 <!--1) Reconocimiento Facial-->
                 <ImageButton
                     android:id="@+id/btnRegistrarFacial"
@@ -248,14 +256,13 @@
                     android:id="@+id/txtviewRegistrarFacial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:paddingLeft="10dp"
                     android:paddingTop="13dp"
                     android:text="@string/txtviewRegistrarFacial"
                     android:textColor="#FFFFFF"
                     android:textSize="10dp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold">
-                </TextView>
+                    android:textStyle="bold"></TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -271,26 +278,24 @@
                     android:layout_marginStart="80dp"
                     android:layout_marginTop="50dp"
                     android:background="@color/button"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:paddingTop="-1dp"
                     android:text="@string/btnRegistrarCrear"
                     android:textColor="@color/white"
-                    tools:ignore="TextContrastCheck,VisualLintButtonSize"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold">
-                </Button>
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck,VisualLintButtonSize"></Button>
 
                 <TextView
                     android:id="@+id/txtviewRegistrarCuentaCreada"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="95dp"
+                    android:fontFamily="@font/fuente_jost_global"
                     android:text="@string/txtviewCuentaCreada"
                     android:textColor="#FFFDFD"
                     android:textColorHint="#FFFFFF"
                     android:textSize="13sp"
-                    android:fontFamily="@font/fuente_jost_global"
-                    android:textStyle="bold">
-                </TextView>
+                    android:textStyle="bold"></TextView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
