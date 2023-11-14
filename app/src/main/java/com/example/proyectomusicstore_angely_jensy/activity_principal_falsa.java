@@ -21,6 +21,7 @@ public class activity_principal_falsa extends AppCompatActivity {
         cerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 cerrarSesion();
             }
         });

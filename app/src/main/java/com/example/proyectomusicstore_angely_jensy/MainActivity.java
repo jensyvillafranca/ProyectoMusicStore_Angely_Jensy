@@ -1,9 +1,14 @@
 package com.example.proyectomusicstore_angely_jensy;
 
 
+import static com.example.proyectomusicstore_angely_jensy.activity_login.estadoSeleccionado;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -57,18 +62,15 @@ public class MainActivity extends AppCompatActivity {
                 gifImageView.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
 
-                // Abrir la actividad activity_principal
+                /*Obtener el valor que viene del sharedPreferences, seria el estado del chechbox*/
+                SharedPreferences sharedPref = getSharedPreferences("estadoCheck", Context.MODE_PRIVATE);
+                Boolean valorCheck = sharedPref.getBoolean("estadoCheck", false);
 
-                if (usuarioEstaLogueado()) {
+                if (usuarioEstaLogueado() && valorCheck == true) {
                     irAPantallaPrincipal();
                 } else {
                     irAPantallaLogin();
                 }
-
-
-                /*Intent intent = new Intent(MainActivity.this, activity_principal.class);
-                startActivity(intent);
-                finish(); // Cierra la actividad actual*/
             }
         }, 5000); // 5000 milisegundos (5 segundos)
     }

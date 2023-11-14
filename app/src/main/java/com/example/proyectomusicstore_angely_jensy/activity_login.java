@@ -1,7 +1,9 @@
 package com.example.proyectomusicstore_angely_jensy;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputFilter;
@@ -10,6 +12,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +45,10 @@ public class activity_login extends AppCompatActivity {
     String contraseniaParaClave = "programacionMovil1";
     Boolean estadoLogin;
 
+    CheckBox recordarmeInicioSesion;
+    public static boolean estadoSeleccionado;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +61,8 @@ public class activity_login extends AppCompatActivity {
         txtLoginUsuario = (EditText) findViewById(R.id.txtRegistrarUsuario);
         txtLoginPassword = (EditText) findViewById(R.id.txtLoginPassword);
         txtviewOlvidaPassword = (TextView) findViewById(R.id.txtviewOlvidaPassword);
+        recordarmeInicioSesion = (CheckBox) findViewById(R.id.checkLoginRecordar);
+
 
 
         /*Evento para el botón de entrar al sistema*/
@@ -98,6 +107,7 @@ public class activity_login extends AppCompatActivity {
 
     /*Metódo para validar credenciales de autenticación*/
     private void validarUsuarioPassword() throws Exception {
+        //Obtener el estado del checkbox de recordarme
         final String encriptarUser = encriptarUsuario(txtLoginUsuario.getText().toString(), contraseniaParaClave);
 
         String url = "https://phpclusters-152621-0.cloudclusters.net/busquedaAutenticacion.php";
@@ -143,6 +153,18 @@ public class activity_login extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             /*ESTO SOLO ES DE PRUEBA*/
+                                            if(recordarmeInicioSesion.isChecked() == true){
+                                                estadoSeleccionado = true;
+                                            }else{
+                                                estadoSeleccionado = false;
+                                            }
+                                            /*Guardar ese valor en el sharedPreference para poder recuperarlo en caso de que la aplicación se cierre*/
+                                            // Para guardar un valor
+                                            SharedPreferences sharedPref = getSharedPreferences("estadoCheck", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPref.edit();
+                                            editor.putBoolean("estadoCheck", estadoSeleccionado);
+                                            editor.apply();
+                                            //Log.d("Estado del checkbox pantalla 1",""+estadoSeleccionado);
                                             Intent intent = new Intent(getApplicationContext(), activity_principal_falsa.class);
                                             startActivity(intent);
                                             finish();
@@ -196,13 +218,6 @@ public class activity_login extends AppCompatActivity {
             byte[] encVal = c.doFinal(usuario.getBytes());
             return Base64.encodeToString(encVal, Base64.DEFAULT);
         }
-        /*public static String encriptarPassword(String pass, String password) throws Exception {
-            SecretKeySpec key = generateKey(password);
-            Cipher c = Cipher.getInstance("AES");
-            c.init(Cipher.ENCRYPT_MODE, key); // aquí es donde se utiliza la clave para desencriptar, esta clave viene del metódod de abajo
-            byte[] encVal = c.doFinal(pass.getBytes());
-            return Base64.encodeToString(encVal, Base64.DEFAULT);
-        }*/
 
 
         /*Generar una clave secreta para ser utilizada para encriptar y desencriptar los datos con el algoritmo AES*/

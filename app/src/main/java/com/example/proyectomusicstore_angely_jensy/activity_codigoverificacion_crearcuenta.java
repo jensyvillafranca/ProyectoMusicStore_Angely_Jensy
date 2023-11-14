@@ -248,7 +248,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
             /*Mostrar mensaje de verificación completada*/
             /*Insertar el usuario en la base de datos.*/
 
-            String url = "https://phpclusters-152474-0.cloudclusters.net/insertarUsuario.php";
+            String url = "https://phpclusters-152621-0.cloudclusters.net/insertarUsuario.php";
             RequestQueue queue = Volley.newRequestQueue(this);
             StringRequest resultadoPost = new StringRequest(
                     Request.Method.POST, url,
@@ -276,6 +276,7 @@ public class activity_codigoverificacion_crearcuenta extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getApplicationContext(), "Error " + error.toString(), Toast.LENGTH_LONG).show();
+
                         }
                     }
             ) {
