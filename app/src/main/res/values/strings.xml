@@ -81,5 +81,6 @@
     <string name="video">Video</string>
     <string name="verTodo">Vertodo</string>
     <string name="tituloConometro">Por favor, espera a que el tiempo finalice para poder solicitar un nuevo código.</string>
+    <string name="identificate">Identifícate</string>
 
 </resources>

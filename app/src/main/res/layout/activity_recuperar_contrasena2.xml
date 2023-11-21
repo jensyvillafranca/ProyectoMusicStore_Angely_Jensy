@@ -54,9 +54,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-             <Space
-                 android:layout_width="match_parent"
-                 android:layout_height="70dp"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="70dp"/>
 
             <TextView
                 android:id="@+id/txtviewVerificarTitulo1"
@@ -123,10 +123,32 @@
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="10dp" />
-
-                <Space
+                <TextView
+                    android:id="@+id/txtviewActivaLetras"
                     android:layout_width="match_parent"
-                    android:layout_height="123dp" />
+                    android:layout_height="45dp"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/fuente_jost_global"
+                    android:justificationMode="inter_word"
+                    android:textColor="#D3D3D3"
+                    android:textSize="12sp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/txtviewCronometro"
+                    android:layout_width="276dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="0dp"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:text="00:00"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:visibility="invisible">
+
+                </TextView>
+
 
                 <Button
                     android:id="@+id/btnRecuperarVerificar"
